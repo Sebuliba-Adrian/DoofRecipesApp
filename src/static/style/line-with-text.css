@@ -1,0 +1,19 @@
+.line-with-text {
+    display: flex;
+    flex-direction: row;
+}
+
+.line {
+    background-color: #999;
+    height: 1px;
+    flex: 1;
+}
+
+.line-text {
+    margin-left: 18px;
+    margin-right: 18px;
+    flex: 0;
+    font-size: 13px;
+    line-height: 4px;
+    color: #999;
+}
