@@ -35,3 +35,17 @@ body {
 .message {
   font-size: 14px;
 }
+.custom-navbar {
+  background-color: white;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  border-bottom-color: #ddd;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.search-box {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
