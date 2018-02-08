@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default NavBar = () => {
+let NavBar = () => {
     return (
         <div className="container">
             <div className="row">
@@ -26,3 +26,5 @@ export default NavBar = () => {
         </div>
     );
 }
+
+export default NavBar;
