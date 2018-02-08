@@ -1,5 +1,37 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+ font-family: 'Asap Condensed', sans-serif;
+  background-color: #fafafa;
+}
+
+.cool-blue-text {
+  color: #1666a0;
+}
+
+.logo {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #222
+}
+
+.grey-text {
+  color: #888;
+}
+
+.form-control {
+  background-color: #fafafa;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #999;
+}
+
+.form-control:focus {
+  background-color: #fafafa;
+}
+
+.message {
+  font-size: 14px;
 }
