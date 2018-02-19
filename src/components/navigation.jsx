@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-let NavBar = () => {
+let NavBar = (prop) => {
     return (
         <div className="container">
             <div className="row">
@@ -15,6 +15,13 @@ let NavBar = () => {
                         className="form-control mr-sm-2 search-box"
                         type="text"
                         placeholder="Search"
+                        
+                    />
+                    <input
+                        className="btn btn-primary"
+                        type="button"
+                        placeholder="Search"
+                        onClick={prop.search}
                     />
                 </div>
                 <div className="col-md-4 text-right logo ">
