@@ -59,9 +59,11 @@ export default class LoginPage extends Component {
                 });
             })
             .catch((error) => {
-                this.setState({
-                    message: error.response.data.message,
-                });
+                if (error.response) {
+                  this.setState({
+                    message: error.response.data.message
+                  });
+                }
             });
 
 
