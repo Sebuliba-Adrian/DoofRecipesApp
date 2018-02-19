@@ -2,12 +2,17 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Registration from './components/authentication/registration';
 import LoginPage from './components/authentication/login';
+import categories from './components/categories/categories';
+import Categories from './components/categories/categories';
+import Dashboard from './components/dashboard'
 
 const App = () => (
   <BrowserRouter>
     <div>
-    <Route path="/login" component={LoginPage} />
-    <Route path="/registration" component={Registration} />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/registration" component={Registration} />
+      <Route path="/dashboard" component={Categories} />
+      {/* <Route path="/" component={Dashboard} /> */}
     </div>
   </BrowserRouter>
 );
