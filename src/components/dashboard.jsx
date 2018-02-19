@@ -18,6 +18,16 @@ export default class Dashboard extends Component {
                 <div className="custom-navbar">
                     <NavBar />
                 </div>
+                <div className="row">
+                    <div className="col-4 ">
+                      LEFT
+                    </div>
+
+                    <div className="col-8 items">
+                        RIGHT
+                    </div>
+                </div>
+                
 
             </div>
         );
