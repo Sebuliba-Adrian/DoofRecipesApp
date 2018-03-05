@@ -16,35 +16,18 @@ export default class Dashboard extends Component {
       message: null,
       categories: [],
       selectedCategory: null,
-      recipes: []
+      recipes: [],
+      pageSize: 4,
+      next: "",
+      prev: ""
     };
-    if (this.state.token) {
-      this.request("getCategories", "categories", "GET");
-    }
+  }
+  onNavigate(navUri) {
+    this.request("navigateCategories", navUri, "GET");
   }
 
-  componentDidMount() {
-    axios.interceptors.request.use(config => {
-      const token = localStorage.getItem("token");
-      config.headers.Authorization = `Bearer ${this.state.token}`;
-      return config;
-    });
-    axios
-      .get(`${APIUrl}categories`)
-      .then(res => {
-        const { categories } = res.data;
-
-        this.setState({ categories: categories });
-
-        //     });
-      })
-      .catch(error => {
-        this.setState({
-          message:
-            "You don't have any categories. Use the above button to add some.",
-          categories: null
-        });
-      });
+  loadFromServer(pageSize) {
+    this.request("getCategories", `categories?limit=${pageSize}`, "GET");
   }
 
   viewRecipes = selectedCategory => {
@@ -78,23 +61,42 @@ export default class Dashboard extends Component {
     }
   };
 
-  request = (action, urlEndPoint, requestMethod, requestBody) => {
-    this.setState({ message: "Processing..." });
-    if (action === "getCategory") {
-      return axios
-        .get(`${APIUrl}categories`)
-        .then(response => {
-          const { categories } = response.data;
-          console.log(categories);
+  updatePageSize(pageSize) {
+    if (pageSize !== this.state.pageSize) {
+      this.loadFromServer(pageSize);
+    }
+  }
+  componentDidMount() {
+    axios.interceptors.request.use(config => {
+      const token = localStorage.getItem("token");
+      config.headers.Authorization = `Bearer ${this.state.token}`;
+      return config;
+    });
+    this.loadFromServer(this.state.pageSize);
+  }
 
-          this.setState({ message: null, categories: categories });
+  request = (action, urlEndPoint, requestMethod, requestBody) => {
+    //this.setState({ message: "Processing..." });
+    if (action === "getCategories") {
+      return axios
+        .get(`${APIUrl}${urlEndPoint}`)
+        .then(response => {
+          const { categories, count, next, prev } = response.data;
+          console.log(count);
+
+          this.setState({
+            message: null,
+            categories: categories,
+            pageSize: count,
+            next: next,
+            prev: prev
+          });
 
           //     });
         })
-        .catch(function(error) {
+        .catch(error => {
           this.setState({
-            message:
-              "You don't have any categories. Use the above button to add some.",
+            message: error.response.data.message,
             categories: null
           });
         });
@@ -105,9 +107,34 @@ export default class Dashboard extends Component {
           const { categories } = response.data;
           console.log(categories);
 
-          this.setState({ message: null, categories: categories });
+          this.setState({
+            message: null,
+            categories: categories
+          });
 
           //     });
+        })
+        .catch(error => {
+          this.setState({
+            message: error.response.data.message,
+            categories: null
+          });
+        });
+    } else if (action === "navigateCategories") {
+      return axios
+        .get(`${urlEndPoint}`)
+        .then(response => {
+        const { categories, count, prev, next } = response.data;
+          console.log("categories inside navigate"+ `${urlEndPoint}`);
+
+          this.setState({
+            message: null,
+            categories: categories,
+            pageSize: count,
+            prev: prev,
+            next: next
+          });
+
         })
         .catch(error => {
           this.setState({
@@ -119,7 +146,10 @@ export default class Dashboard extends Component {
       const { name, description } = requestBody;
 
       return axios
-        .post(`${APIUrl}${urlEndPoint}`, { name, description })
+        .post(`${APIUrl}${urlEndPoint}`, {
+          name,
+          description
+        })
         .then(response => {
           let stateCopy = [
             ...this.state.categories,
@@ -143,7 +173,10 @@ export default class Dashboard extends Component {
       const { name, description } = requestBody;
 
       return axios
-        .put(`${APIUrl}${urlEndPoint}`, { name, description })
+        .put(`${APIUrl}${urlEndPoint}`, {
+          name,
+          description
+        })
         .then(
           function(response) {
             let categoriesCopy = [...this.state.categories];
@@ -215,7 +248,10 @@ export default class Dashboard extends Component {
       const { name, description } = requestBody;
 
       return axios
-        .post(`${APIUrl}${urlEndPoint}`, { name, description })
+        .post(`${APIUrl}${urlEndPoint}`, {
+          name,
+          description
+        })
         .then(response => {
           let stateCopy = [
             ...this.state.recipes,
@@ -229,14 +265,19 @@ export default class Dashboard extends Component {
         })
         .catch(error => {
           if (error.response && error.response.data) {
-            this.setState({ message: error.response.data.message });
+            this.setState({
+              message: error.response.data.message
+            });
           }
         });
     } else if (action === "updateRecipe") {
       const { name, description } = requestBody;
 
       return axios
-        .put(`${APIUrl}${urlEndPoint}`, { name, description })
+        .put(`${APIUrl}${urlEndPoint}`, {
+          name,
+          description
+        })
         .then(
           function(response) {
             let recipesCopy = [...this.state.recipes];
@@ -302,6 +343,11 @@ export default class Dashboard extends Component {
           this.state.message && <Message message={this.state.message} />}
         {this.state.showing === "categories" ? (
           <Categories
+            pageSize={this.state.pageSize}
+            next={this.state.next}
+            prev={this.state.prev}
+            updatePageSize={this.updatePageSize}
+            onNavigate={this.onNavigate}
             categories={this.state.categories}
             request={this.request}
             viewRecipes={this.viewRecipes}
