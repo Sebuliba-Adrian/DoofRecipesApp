@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
- font-family: 'Asap Condensed', sans-serif;
+  font-family: "Asap Condensed", sans-serif;
   background-color: #fafafa;
 }
 
@@ -10,8 +10,8 @@ body {
 }
 
 .logo {
-  font-family: 'Open Sans Condensed', sans-serif;
-  color: #222
+  font-family: "Open Sans Condensed", sans-serif;
+  color: #222;
 }
 
 .grey-text {
@@ -48,4 +48,31 @@ body {
   width: 300px;
   margin: auto;
   text-align: center;
+}
+.btn-cool-blue {
+  background-color: #1666a0;
+  color: #fff;
+}
+
+.text-cool-blue {
+  color: #1666a0;
+}
+.bg-cool-blue {
+  background-color: #1666a0;
+}
+
+.logout-dropdown {
+  position: relative;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.logout-dropdown:hover {
+  cursor: pointer;
+}
+
+.dropdown-cust {
+  right: 0;
+  left: auto;
 }
