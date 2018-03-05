@@ -1,8 +1,28 @@
-.date-display{
-    font-size: 13px;
-    width: 120px;
+.date-display {
+    width: 100px;
+    border: 1px solid #ddd;
+    border-top-width: 0;
+    box-shadow: 0 0 5px rgba(30, 30, 30, 0.4);
 }
 
-.date-display h4{
+.date-display-month {
+    padding-top: 1px;
+    padding-bottom: 2px;
+    margin-top: 12px;
+}
+
+.date-display-day {
     padding-top: 8px;
+    color: #777;
+}
+
+.date-display-year {
+    background: #eaeaea;
+    font-size: 13px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.item-data {
+    padding-left: 0;
 }
