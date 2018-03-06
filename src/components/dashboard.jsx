@@ -19,11 +19,17 @@ export default class Dashboard extends Component {
       recipes: [],
       pageSize: 4,
       next: "",
-      prev: ""
+      prev: "",
+      recnext: "",
+      recprev: ""
+
     };
   }
-  onNavigate(navUri) {
+  onNavigateCategories(navUri) {
     this.request("navigateCategories", navUri, "GET");
+  }
+  onNavigateRecipes(navUri) {
+    this.request("navigateRecipes", navUri, "GET");
   }
 
   loadFromServer(pageSize) {
@@ -33,11 +39,14 @@ export default class Dashboard extends Component {
   viewRecipes = selectedCategory => {
     this.setState({
       showing: "recipes",
-      selectedCategory
+      selectedCategory,
+      recipes: []
+      
     });
+
     this.request(
       "getRecipes",
-      `categories/${selectedCategory.id}/recipes`,
+      `categories/${selectedCategory.id}/recipes?limit=${this.state.pageSize}`,
       "GET"
     );
   };
@@ -46,7 +55,7 @@ export default class Dashboard extends Component {
     this.request("getCategories", "categories", "GET");
     this.setState({
       showing: "categories",
-      recipes: null,
+      recipes: [],
       selectedCategory: null
     });
   };
@@ -67,19 +76,18 @@ export default class Dashboard extends Component {
     }
   }
   componentDidMount() {
-    axios.interceptors.request.use(config => {
-      const token = localStorage.getItem("token");
-      config.headers.Authorization = `Bearer ${this.state.token}`;
-      return config;
-    });
-    this.loadFromServer(this.state.pageSize);
+    if (this.state.token) {
+      this.request("getCategories", "categories", "GET");
+    }
   }
 
   request = (action, urlEndPoint, requestMethod, requestBody) => {
-    //this.setState({ message: "Processing..." });
+    axios.defaults.headers.common["Authorization"] = `Bearer ${
+      this.state.token
+    }`;
     if (action === "getCategories") {
-      return axios
-        .get(`${APIUrl}${urlEndPoint}`)
+      axios
+        .get(`${APIUrl}categories`)
         .then(response => {
           const { categories, count, next, prev } = response.data;
           console.log(count);
@@ -95,10 +103,12 @@ export default class Dashboard extends Component {
           //     });
         })
         .catch(error => {
-          this.setState({
-            message: error.response.data.message,
-            categories: null
-          });
+          if (error.response && error.response.data) {
+            this.setState({
+              message: error.response.data.message,
+              categories: []
+            });
+          }
         });
     } else if (action === "searchCategories") {
       return axios
@@ -124,8 +134,7 @@ export default class Dashboard extends Component {
       return axios
         .get(`${urlEndPoint}`)
         .then(response => {
-        const { categories, count, prev, next } = response.data;
-          console.log("categories inside navigate"+ `${urlEndPoint}`);
+          const { categories, count, prev, next } = response.data;
 
           this.setState({
             message: null,
@@ -134,7 +143,6 @@ export default class Dashboard extends Component {
             prev: prev,
             next: next
           });
-
         })
         .catch(error => {
           this.setState({
@@ -182,7 +190,7 @@ export default class Dashboard extends Component {
             let categoriesCopy = [...this.state.categories];
             //Find index of specific object using findIndex method.
             const objIndex = categoriesCopy.findIndex(
-              category => category.id == requestBody.id
+              category => category.id === requestBody.id
             );
 
             categoriesCopy[objIndex].name = requestBody.name;
@@ -204,7 +212,7 @@ export default class Dashboard extends Component {
         //Find index of specific object using findIndex method.
         const objIndex = stateCopy.findIndex(
           category =>
-            category.id ==
+            category.id ===
             parseInt(
               urlEndPoint.substring(urlEndPoint.lastIndexOf("/") + 1),
               10
@@ -229,12 +237,15 @@ export default class Dashboard extends Component {
     } else if (action === "getRecipes") {
       return axios
         .get(`${APIUrl}${urlEndPoint}`)
-        .then(res => {
-          const { recipes } = res.data;
+        .then(response => {
+          const { recipes, count, prev, next } = response.data;
 
           this.setState({
             message: null,
-            recipes: recipes
+            recipes: recipes,
+            count: count,
+            recprev: prev,
+            recnext: next
           });
         })
         .catch(error => {
@@ -242,6 +253,26 @@ export default class Dashboard extends Component {
             message:
               "You don't have any recipes in this category. Use the add button above to add some.",
             recipes: []
+          });
+        });
+    } else if (action === "navigateRecipes") {
+      return axios
+        .get(`${urlEndPoint}`)
+        .then(response => {
+          const { recipes, count, prev, next } = response.data;
+
+          this.setState({
+            message: null,
+            recipes: recipes,
+            pageSize: count,
+            recprev: prev,
+            recnext: next
+          });
+        })
+        .catch(error => {
+          this.setState({
+            message: error.response.data.message,
+            categories: null
           });
         });
     } else if (action === "addRecipe") {
@@ -262,6 +293,12 @@ export default class Dashboard extends Component {
             recipes: stateCopy,
             message: response.data.message
           });
+
+          this.request(
+            "getRecipes",
+            `categories/${this.state.selectedCategory.id}/recipes?limit=${4}`,
+            "GET"
+          );
         })
         .catch(error => {
           if (error.response && error.response.data) {
@@ -283,7 +320,7 @@ export default class Dashboard extends Component {
             let recipesCopy = [...this.state.recipes];
             //Find index of specific object using findIndex method.
             const objIndex = recipesCopy.findIndex(
-              recipe => recipe.id == requestBody.id
+              recipe => recipe.id === requestBody.id
             );
 
             recipesCopy[objIndex].name = requestBody.name;
@@ -305,7 +342,7 @@ export default class Dashboard extends Component {
         //Find index of specific object using findIndex method.
         const objIndex = stateCopy.findIndex(
           recipe =>
-            recipe.id ==
+            recipe.id ===
             parseInt(
               urlEndPoint.substring(urlEndPoint.lastIndexOf("/") + 1),
               10
@@ -347,13 +384,18 @@ export default class Dashboard extends Component {
             next={this.state.next}
             prev={this.state.prev}
             updatePageSize={this.updatePageSize}
-            onNavigate={this.onNavigate}
+            onNavigate={this.onNavigateCategories}
             categories={this.state.categories}
             request={this.request}
             viewRecipes={this.viewRecipes}
           />
         ) : (
           <Recipes
+            pageSize={this.state.pageSize}
+            next={this.state.recnext}
+            prev={this.state.recprev}
+            updatePageSize={this.updatePageSize}
+            onNavigate={this.onNavigateRecipes}
             selectedCategory={this.state.selectedCategory}
             recipes={this.state.recipes}
             request={this.request}
