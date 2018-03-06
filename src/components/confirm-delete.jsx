@@ -2,7 +2,6 @@ import React from "react";
 
 export default function ConfirmDelete(props) {
   function deleteAction(event) {
-    let propId = props.theId.indexOf("deleteCategoryModel");
     if (props.theId.indexOf("deleteCategoryModel") > -1) {
       props.request(
         "deleteCategory",
