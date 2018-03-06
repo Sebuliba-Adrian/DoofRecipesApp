@@ -1,69 +1,115 @@
-import React from "react";
+import React, { Component } from "react";
 import RecipeModal from "./recipe-modal";
 import Recipe from "./recipe";
 
-export default function Recipes(props) {
-  return <div>
-      <div className="container items-container">
-        <div className="card mt-3 mb-3">
-          <div className="card-block">
-            <div className="d-flex w-100 justify-content-between mb-2">
-              <h5>  </h5>
-              <button className="btn btn-sm btn-cool-blue col-xs-12" data-toggle="modal" data-target="#addRecipeModal">
-                <span className="fa fa-plus pull-left" /> Add Recipe
-              </button>
-            </div>
-            <nav className="ml-4">
-              <ul className="pagination pagination-sm">
-                <li className="page-item disabled">
-                  <a className="page-link" href="#" tabIndex="-1">
-                    Previous
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    1
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    2
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    3
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    Next
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            {!props.recipes ? <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
-                Select a category to view it's recipes
-              </h6> : props.recipes.length === 0 ? <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
-                No recipes in {props.selectedCategory.name}
-              </h6> : <div>
+export default class Recipes extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleNavPrev = this.handleNavPrev.bind(this);
+    this.handleNavNext = this.handleNavNext.bind(this);
+    // this.handleInput = this.handleInput.bind(this);
+  }
+  handleNavPrev(event) {
+    event.preventDefault();
+    this.props.onNavigate(this.props.prev);
+  }
+
+  handleNavNext(event) {
+    event.preventDefault();
+    this.props.onNavigate(this.props.next);
+  }
+
+  render() {
+    const {
+      recipes,
+      selectedCategory,
+      request,
+      next,
+      prev
+    } = this.props;
+    var recipelist = recipes.map(recipe => (
+      <Recipe
+        key={recipe.id}
+        recipe={recipe}
+        request={request}
+        selectedCategory={selectedCategory}
+      />
+    ));
+
+    var navLinks = [];
+    if (prev !== "None" && prev !== "") {
+      navLinks.push(
+        <li key={0} className="page-item">
+          <a
+            className="page-link"
+            tabIndex="-1"
+            onClick={this.handleNavPrev}
+          >
+            &lt; &lt; Previous
+          </a>
+        </li>
+      );
+    }
+    if (next !== "None" && next !== "") {
+      navLinks.push(
+        <li key={1} className="page-item">
+          <a
+            className="page-link"
+            tabIndex="-1"
+            onClick={this.handleNavNext}
+          >
+            Next &gt; &gt;
+          </a>
+        </li>
+      );
+    }
+
+    return (
+      <div>
+        <div className="container items-container">
+          <div className="card mt-3 mb-3">
+            <div className="card-block">
+              <div className="d-flex w-100 justify-content-between mb-2">
+                <h5> </h5>
+                <button
+                  className="btn btn-sm btn-cool-blue col-xs-12"
+                  data-toggle="modal"
+                  data-target="#addRecipeModal"
+                >
+                  <span className="fa fa-plus pull-left" /> Add Recipe
+                </button>
+              </div>
+              <nav aria-label="...">
+                <ul className="pagination pagination-lg">{navLinks}</ul>
+              </nav>
+              {!recipes ? (
                 <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
-                  Recipes in {props.selectedCategory.name}
+                  Select a category to view it's recipes
                 </h6>
-                <ul className="list-group list-group-flush">
-                  {props.recipes.map(recipe => (
-                    <Recipe
-                      key={recipe.id}
-                      recipe={recipe}
-                      request={props.request}
-                      selectedCategory={props.selectedCategory}
-                    />
-                  ))}
-                </ul>
-              </div>}
+              ) : recipes.length === 0 ? (
+                <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
+                  No recipes in {selectedCategory.name}
+                </h6>
+              ) : (
+                <div>
+                  <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
+                    Recipes in {selectedCategory.name}
+                  </h6>
+                  <ul className="list-group list-group-flush">{recipelist}</ul>
+                </div>
+              )}
+            </div>
           </div>
         </div>
+        <RecipeModal
+          title="Create a recipe"
+          action="Submit"
+          theId="addRecipeModal"
+          request={request}
+          selectedCategory={selectedCategory}
+        />
       </div>
-      <RecipeModal title="Create a recipe" action="Submit" theId="addRecipeModal" request={props.request} selectedCategory={props.selectedCategory} />
-    </div>;
+    );
+  }
 }
