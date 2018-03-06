@@ -7,9 +7,9 @@ import Dashboard from "./components/dashboard";
 const App = () => (
   <BrowserRouter>
     <div>
-      <Route path="(/|/login)" component={LoginPage} />
       <Route path="/registration" component={Registration} />
-      <Route path="/dashboard" component={Dashboard} />
+      <Route path="(/|/login)" component={LoginPage} />
+      <Route path="(/dashboard)" component={Dashboard} />
     </div>
   </BrowserRouter>
 );
