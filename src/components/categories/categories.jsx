@@ -1,20 +1,14 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Redirect } from "react-router-dom";
-import NavBar from "../navigation";
-import { APIUrl } from "../../App";
-import Message from "../message";
 import CategoryModal from "./category-modal";
 import Category from "./category";
 
 export default class Categories extends Component {
   constructor(props) {
     super(props);
-    
+
     this.handleNavPrev = this.handleNavPrev.bind(this);
     this.handleNavNext = this.handleNavNext.bind(this);
-    
-    this.handleInput = this.handleInput.bind(this);
   }
 
   handleInput(event) {
@@ -33,7 +27,6 @@ export default class Categories extends Component {
 
   // tag::handle-nav[]
 
-
   handleNavPrev(event) {
     event.preventDefault();
     this.props.onNavigate(this.props.prev);
@@ -44,21 +37,15 @@ export default class Categories extends Component {
     this.props.onNavigate(this.props.next);
   }
 
-  
-  
   render() {
     const {
       categories,
       request,
       viewRecipes,
-      pageSize,
       next,
-      prev,
-      onNavigate
+      prev
     } = this.props;
 
-    console.log(prev+ "qwertyuik" )
-    console.log(next + "qwertyuik");
     var categoryList = categories.map(category => (
       <Category
         key={category.id}
@@ -69,13 +56,31 @@ export default class Categories extends Component {
     ));
 
     var navLinks = [];
-    if (prev !== "None") {
-      navLinks.push(<button key="prev" onClick={this.handleNavPrev}>
-          &lt; &lt; Previous    </button>);
+    if (prev !== "None" && prev !== "") {
+      navLinks.push(
+        <li key={1} className="page-item">
+          <a
+            className="page-link"
+            tabIndex="-1"
+            onClick={this.handleNavNext}
+          >
+           &lt; &lt; Prev
+          </a>
+        </li>
+      );
     }
-    if (next !== "None") {
-      navLinks.push(<button key="next" onClick={this.handleNavNext}>
-          Next &gt; &gt;    </button>);
+    if (next !== "None" && prev !== "") {
+      navLinks.push(
+        <li key={1} className="page-item">
+          <a
+            className="page-link"
+            tabIndex="-1"
+            onClick={this.handleNavNext}
+          >
+            Next &gt; &gt;
+          </a>
+        </li>
+      );
     }
 
     return (
@@ -93,6 +98,9 @@ export default class Categories extends Component {
                   <span className="fa fa-plus pull-left" /> Add category
                 </button>
               </div>
+              <nav aria-label="...">
+                <ul className="pagination pagination-lg">{navLinks}</ul>
+              </nav>
               {categories &&
                 categories.length !== 0 && (
                   <div>
@@ -109,7 +117,6 @@ export default class Categories extends Component {
                 )}
             </div>
           </div>
-          <div>{navLinks}</div>
         </div>
         <CategoryModal
           title="Create a category"
