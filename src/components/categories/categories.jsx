@@ -54,22 +54,22 @@ export default class Categories extends Component {
         viewRecipes={viewRecipes}
       />
     ));
-
+    console.log(prev);
     var navLinks = [];
     if (prev !== "None" && prev !== "") {
       navLinks.push(
-        <li key={1} className="page-item">
+        <li key={0} className="page-item">
           <a
             className="page-link"
             tabIndex="-1"
-            onClick={this.handleNavNext}
+            onClick={this.handleNavPrev}
           >
            &lt; &lt; Prev
           </a>
         </li>
       );
     }
-    if (next !== "None" && prev !== "") {
+    if (next !== "None" && next !== "") {
       navLinks.push(
         <li key={1} className="page-item">
           <a
