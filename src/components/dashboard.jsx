@@ -1,28 +1,29 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import NavBar from "./navigation";
-import Message from "./message";
 import Categories from "./categories/categories";
 import Recipes from "./recipes/recipes";
 import { APIUrl } from "../App";
 import axios from "axios";
+import LoadingSpinner from "./loadingSpinner";
 
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
+
+    this.previousMessage = "";
     this.state = {
       token: localStorage.getItem("token"),
       showing: "categories",
-      message: null,
+      message: "Processing...",
       categories: [],
-      selectedCategory: null,
+      selectedCategory: {},
       recipes: [],
       pageSize: 4,
       next: "",
       prev: "",
       recnext: "",
-      recprev: ""
-
+      recprev: "",
+      isLoading: false
     };
   }
   onNavigateCategories(navUri) {
@@ -40,8 +41,8 @@ export default class Dashboard extends Component {
     this.setState({
       showing: "recipes",
       selectedCategory,
+      message: "",
       recipes: []
-      
     });
 
     this.request(
@@ -56,7 +57,7 @@ export default class Dashboard extends Component {
     this.setState({
       showing: "categories",
       recipes: [],
-      selectedCategory: null
+      selectedCategory: {}
     });
   };
 
@@ -81,23 +82,40 @@ export default class Dashboard extends Component {
     }
   }
 
+  componentDidUpdate() {
+    if (
+      this.state.message !== "" &&
+      this.state.token &&
+      this.previousMessage !== this.state.message
+    ) {
+      this.previousMessage = this.state.message;
+      this.snackbar.className = "show";
+      this.snackbar.innerHTML = this.state.message;
+      setTimeout(() => {
+        this.snackbar.className = this.snackbar.className.replace("show", "");
+      }, 10000);
+    }
+  }
+
   request = (action, urlEndPoint, requestMethod, requestBody) => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${
       this.state.token
     }`;
     if (action === "getCategories") {
-      axios
+      this.setState({ isLoading: true });
+      return axios
         .get(`${APIUrl}categories`)
         .then(response => {
           const { categories, count, next, prev } = response.data;
-          console.log(count);
+          console.log(categories);
 
           this.setState({
-            message: null,
+            message: "",
             categories: categories,
             pageSize: count,
             next: next,
-            prev: prev
+            prev: prev,
+            isLoading: false
           });
 
           //     });
@@ -118,7 +136,7 @@ export default class Dashboard extends Component {
           console.log(categories);
 
           this.setState({
-            message: null,
+            message: "",
             categories: categories
           });
 
@@ -127,7 +145,7 @@ export default class Dashboard extends Component {
         .catch(error => {
           this.setState({
             message: error.response.data.message,
-            categories: null
+            categories: []
           });
         });
     } else if (action === "navigateCategories") {
@@ -137,7 +155,7 @@ export default class Dashboard extends Component {
           const { categories, count, prev, next } = response.data;
 
           this.setState({
-            message: null,
+            message: "",
             categories: categories,
             pageSize: count,
             prev: prev,
@@ -147,7 +165,7 @@ export default class Dashboard extends Component {
         .catch(error => {
           this.setState({
             message: error.response.data.message,
-            categories: null
+            categories: []
           });
         });
     } else if (action === "addCategory") {
@@ -232,7 +250,7 @@ export default class Dashboard extends Component {
       localStorage.removeItem("username");
       this.setState({
         message: "Logged out successfully.",
-        token: null
+        token: ""
       });
     } else if (action === "getRecipes") {
       return axios
@@ -241,7 +259,7 @@ export default class Dashboard extends Component {
           const { recipes, count, prev, next } = response.data;
 
           this.setState({
-            message: null,
+            message: "",
             recipes: recipes,
             count: count,
             recprev: prev,
@@ -262,7 +280,7 @@ export default class Dashboard extends Component {
           const { recipes, count, prev, next } = response.data;
 
           this.setState({
-            message: null,
+            message: "",
             recipes: recipes,
             pageSize: count,
             recprev: prev,
@@ -272,7 +290,7 @@ export default class Dashboard extends Component {
         .catch(error => {
           this.setState({
             message: error.response.data.message,
-            categories: null
+            categories: []
           });
         });
     } else if (action === "addRecipe") {
@@ -360,12 +378,9 @@ export default class Dashboard extends Component {
   };
 
   render() {
+    const { isLoading } = this.state;
     if (!this.state.token) {
-      return (
-        <Redirect
-          to={{ pathname: "/", data: { message: this.state.message } }}
-        />
-      );
+      this.props.history.replace("/login", { message: this.state.message });
     }
     return (
       <div>
@@ -376,32 +391,44 @@ export default class Dashboard extends Component {
             search={this.search}
           />
         </div>
-        {this.state != null &&
-          this.state.message && <Message message={this.state.message} />}
-        {this.state.showing === "categories" ? (
-          <Categories
-            pageSize={this.state.pageSize}
-            next={this.state.next}
-            prev={this.state.prev}
-            updatePageSize={this.updatePageSize}
-            onNavigate={this.onNavigateCategories}
-            categories={this.state.categories}
-            request={this.request}
-            viewRecipes={this.viewRecipes}
-          />
-        ) : (
-          <Recipes
-            pageSize={this.state.pageSize}
-            next={this.state.recnext}
-            prev={this.state.recprev}
-            updatePageSize={this.updatePageSize}
-            onNavigate={this.onNavigateRecipes}
-            selectedCategory={this.state.selectedCategory}
-            recipes={this.state.recipes}
-            request={this.request}
-            viewCategories={this.viewCategories}
-          />
-        )}
+        <div className="row">
+          <div className="col-4 categories">
+            {isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <Categories
+                pageSize={this.state.pageSize}
+                next={this.state.next}
+                prev={this.state.prev}
+                updatePageSize={this.updatePageSize}
+                onNavigate={this.onNavigateCategories}
+                categories={this.state.categories}
+                request={this.request}
+                viewRecipes={this.viewRecipes}
+              />
+            )}
+          </div>
+          <div className="col-8 recipes">
+            <Recipes
+              pageSize={this.state.pageSize}
+              next={this.state.recnext}
+              prev={this.state.recprev}
+              updatePageSize={this.updatePageSize}
+              onNavigate={this.onNavigateRecipes}
+              selectedCategory={this.state.selectedCategory}
+              recipes={this.state.recipes}
+              request={this.request}
+              viewCategories={this.viewCategories}
+            />
+          </div>
+        </div>
+
+        <div
+          id="snackbar"
+          ref={snackbar => {
+            this.snackbar = snackbar;
+          }}
+        />
       </div>
     );
   }
