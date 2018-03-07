@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import Logo from '../logo';
 import Message from '../message';
 import LineWithText from './line-with-text';
@@ -90,7 +89,7 @@ export default class Registration extends Component {
 
     render() {
         if (this.state.registered) {
-            return <Redirect to={{ pathname: '/login', data: { message: this.state.message } }} />;
+            this.props.history.replace('/login', { message: this.state.message });
         }
         return (
             <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2">

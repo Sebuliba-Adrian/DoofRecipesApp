@@ -1,17 +1,18 @@
-body {
+.body {
   margin: 0;
   padding: 0;
- font-family: 'Asap Condensed', sans-serif;
+  font-family: 'Asap Condensed', sans-serif;
   background-color: #fafafa;
-}
-
-.cool-blue-text {
-  color: #1666a0;
 }
 
 .logo {
   font-family: 'Open Sans Condensed', sans-serif;
-  color: #222
+}
+
+.no-border-corners {
+  margin-top: -16px;
+  border-radius: 2px;
+  box-shadow: 0 0 7px rgba(30, 30, 30, 0.4);
 }
 
 .grey-text {
@@ -35,17 +36,119 @@ body {
 .message {
   font-size: 14px;
 }
+
 .custom-navbar {
   background-color: white;
   border-bottom-style: solid;
   border-bottom-width: thin;
   border-bottom-color: #ddd;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .search-box {
-  width: 300px;
-  margin: auto;
+  margin-top: 6px;
+  display: inline-block;
   text-align: center;
+}
+
+.btn-cool-blue {
+  background-color: #1666a0;
+  color: #fff
+}
+
+.text-cool-blue {
+  color: #055E99;
+}
+.bg-cool-blue {
+  background-color: #1666a0;
+}
+
+#snackbar {
+  color: #fff;
+  background: #5bc0de;
+  text-align: center;
+  border-radius: 2px;
+  padding: 10px;
+  bottom: 30px;
+  left: 30%;
+  width: 40%;
+  z-index: 1;
+  visibility: hidden;
+  position: fixed;
+}
+
+#snackbar.show {
+  visibility: visible;
+  animation: fi 0.5s, fo 0.5s 2.5s;
+}
+
+@keyframes fi {
+  from {
+      bottom: 0;
+      opacity: 0;
+  }
+  to {
+      bottom: 30px;
+      opacity: 1;
+  }
+}
+
+@keyframes fo {
+  from {
+      bottom: 30px;
+      opacity: 1;
+  }
+  to {
+      bottom: 0;
+      opacity: 0;
+  }
+}
+
+.bg-banner {
+  height: 50vh;
+  background: #1666a0;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.card-vcenter {
+  transform: translateY(20%)
+}
+
+.logout-dropdown {
+  position: relative;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.logout-dropdown:hover {
+  cursor: pointer;
+}
+
+.dropdown-cust {
+  right: 0;
+  left: auto;
+}
+
+.categories {
+  padding-right: 0;
+}
+
+.recipes {
+  padding-left: 0;
+}
+
+.recipes-container {
+  padding-left: 0;
+}
+
+.fa-pencil-square-o:hover {
+  color: #1666a0;
+}
+
+.fa-trash-o:hover {
+  color: #d9534f;
 }
