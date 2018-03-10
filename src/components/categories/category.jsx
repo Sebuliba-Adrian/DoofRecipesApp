@@ -18,9 +18,9 @@ export default function Category(props) {
       <a
         href=""
         onClick={viewRecipes}
-        className="list-group-item list-group-item-action flex-column align-items-start"
+        className="list-group-item list-group-item-action flex-column align-items-start animated lightSpeedIn"
       >
-        <div className="d-flex w-100 justify-content-between">
+        <div className="d-flex w-100 justify-content-between ">
           <div>
             {props.category.date_modified && (
               <small className="text-muted">
@@ -50,7 +50,7 @@ export default function Category(props) {
         </div>
         <br />
         <h4 className="mb-1">{props.category.name}</h4>
-        <h6>{props.category.description}</h6>
+        <p className="mb-1">{props.category.description}</p>
         <small className="text-muted">
           <strong>Created: </strong>
           {props.category.date_created.substring(4)}
