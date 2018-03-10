@@ -19,6 +19,8 @@ export default class Dashboard extends Component {
       selectedCategory: {},
       recipes: [],
       pageSize: 4,
+      count: 0,
+      total: 0,
       next: "",
       prev: "",
       recnext: "",
@@ -42,7 +44,9 @@ export default class Dashboard extends Component {
       showing: "recipes",
       selectedCategory,
       message: "",
-      recipes: []
+      recipes: [],
+      recnext: "",
+      recprev: ""
     });
 
     this.request(
@@ -170,7 +174,7 @@ export default class Dashboard extends Component {
         });
     } else if (action === "addCategory") {
       const { name, description } = requestBody;
-
+      console.log(description);
       return axios
         .post(`${APIUrl}${urlEndPoint}`, {
           name,
@@ -226,7 +230,8 @@ export default class Dashboard extends Component {
         });
     } else if (action === "deleteCategory") {
       return axios.delete(`${APIUrl}${urlEndPoint}`).then(response => {
-        const stateCopy = [...this.state.categories];
+        const { categories, prev, next } = this.state;
+        const stateCopy = [...categories];
         //Find index of specific object using findIndex method.
         const objIndex = stateCopy.findIndex(
           category =>
@@ -241,9 +246,17 @@ export default class Dashboard extends Component {
 
         this.setState({
           message: response.data.message,
-          categories: stateCopy
+          categories: stateCopy,
+          recipes: [],
+          next: next,
+          prev: prev
         });
-        this.componentDidMount();
+
+        var prevo = parseInt(prev.match(/\d+$/)[0], 10);
+        console.log(categories.length)
+        if (categories.length === 1) {
+          this.request("getCategories", `categories/?page=${prevo}`, "GET");
+        }
       });
     } else if (action === "logoutUser") {
       localStorage.removeItem("token");
@@ -256,14 +269,16 @@ export default class Dashboard extends Component {
       return axios
         .get(`${APIUrl}${urlEndPoint}`)
         .then(response => {
-          const { recipes, count, prev, next } = response.data;
+          const { recipes, count, prev, next, total } = response.data;
+          console.log(total);
 
           this.setState({
             message: "",
             recipes: recipes,
             count: count,
             recprev: prev,
-            recnext: next
+            recnext: next,
+            total: total
           });
         })
         .catch(error => {
@@ -278,6 +293,7 @@ export default class Dashboard extends Component {
         .get(`${urlEndPoint}`)
         .then(response => {
           const { recipes, count, prev, next } = response.data;
+          console.log(count);
 
           this.setState({
             message: "",
@@ -320,8 +336,9 @@ export default class Dashboard extends Component {
         })
         .catch(error => {
           if (error.response && error.response.data) {
+            console.log(error.response.data.message);
             this.setState({
-              message: error.response.data.message
+              message: error.response.data.message.name
             });
           }
         });
@@ -355,8 +372,9 @@ export default class Dashboard extends Component {
           console.log(error);
         });
     } else if (action === "deleteRecipe") {
+      const { recipes, recnext, recprev, total, count } = this.state;
       return axios.delete(`${APIUrl}${urlEndPoint}`).then(response => {
-        const stateCopy = [...this.state.recipes];
+        const stateCopy = [...recipes];
         //Find index of specific object using findIndex method.
         const objIndex = stateCopy.findIndex(
           recipe =>
@@ -371,8 +389,22 @@ export default class Dashboard extends Component {
 
         this.setState({
           message: response.data.message,
-          recipes: stateCopy
+          recipes: stateCopy,
+          recprev: recprev,
+          recnext: recnext,
+          total: total,
+          count: count
         });
+
+        var prev = parseInt(recprev.match(/\d+$/)[0], 10);
+
+        if (recipes.length === 1) {
+          this.request(
+            "getRecipes",
+            `categories/${this.state.selectedCategory.id}/recipes?page=${prev}`,
+            "GET"
+          );
+        }
       });
     }
   };
@@ -383,7 +415,7 @@ export default class Dashboard extends Component {
       this.props.history.replace("/login", { message: this.state.message });
     }
     return (
-      <div>
+      <div className="container-fluid" styles={{ maxWidth: "500px" }}>
         <div className="custom-navbar bg-cool-blue">
           <NavBar
             request={this.request}

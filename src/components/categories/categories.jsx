@@ -54,7 +54,6 @@ export default class Categories extends Component {
         viewRecipes={viewRecipes}
       />
     ));
-    console.log(prev);
     var navLinks = [];
     if (prev !== "None" && prev !== "") {
       navLinks.push(

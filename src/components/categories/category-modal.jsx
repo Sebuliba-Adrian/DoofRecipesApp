@@ -79,6 +79,8 @@ export default class CategoryModal extends Component {
                   className="form-control"
                   id="description"
                   name="description"
+                  maxLength="140" 
+                  rows="7"
                   onChange={this.onInputChange}
                   value={this.state.description}
                 />

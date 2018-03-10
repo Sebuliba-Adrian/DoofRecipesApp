@@ -1,12 +1,12 @@
 .body {
   margin: 0;
   padding: 0;
-  font-family: 'Asap Condensed', sans-serif;
+  font-family: "Asap Condensed", sans-serif;
   background-color: #fafafa;
 }
 
 .logo {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 .no-border-corners {
@@ -54,11 +54,11 @@
 
 .btn-cool-blue {
   background-color: #1666a0;
-  color: #fff
+  color: #fff;
 }
 
 .text-cool-blue {
-  color: #055E99;
+  color: #055e99;
 }
 .bg-cool-blue {
   background-color: #1666a0;
@@ -85,23 +85,23 @@
 
 @keyframes fi {
   from {
-      bottom: 0;
-      opacity: 0;
+    bottom: 0;
+    opacity: 0;
   }
   to {
-      bottom: 30px;
-      opacity: 1;
+    bottom: 30px;
+    opacity: 1;
   }
 }
 
 @keyframes fo {
   from {
-      bottom: 30px;
-      opacity: 1;
+    bottom: 30px;
+    opacity: 1;
   }
   to {
-      bottom: 0;
-      opacity: 0;
+    bottom: 0;
+    opacity: 0;
   }
 }
 
@@ -114,7 +114,7 @@
 }
 
 .card-vcenter {
-  transform: translateY(20%)
+  transform: translateY(20%);
 }
 
 .logout-dropdown {
@@ -151,4 +151,58 @@
 
 .fa-trash-o:hover {
   color: #d9534f;
+}
+
+div.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.custom-navbar {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.page-item {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.modal {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+div.container {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -21,13 +21,8 @@ export default class Recipes extends Component {
   }
 
   render() {
-    const {
-      recipes,
-      selectedCategory,
-      request,
-      next,
-      prev
-    } = this.props;
+    const { recipes, selectedCategory, request, next, prev } = this.props;
+
     var recipelist = recipes.map(recipe => (
       <Recipe
         key={recipe.id}
@@ -41,11 +36,7 @@ export default class Recipes extends Component {
     if (prev !== "None" && prev !== "") {
       navLinks.push(
         <li key={0} className="page-item">
-          <a
-            className="page-link"
-            tabIndex="-1"
-            onClick={this.handleNavPrev}
-          >
+          <a className="page-link" tabIndex="-1" onClick={this.handleNavPrev}>
             &lt; &lt; Previous
           </a>
         </li>
@@ -54,11 +45,7 @@ export default class Recipes extends Component {
     if (next !== "None" && next !== "") {
       navLinks.push(
         <li key={1} className="page-item">
-          <a
-            className="page-link"
-            tabIndex="-1"
-            onClick={this.handleNavNext}
-          >
+          <a className="page-link" tabIndex="-1" onClick={this.handleNavNext}>
             Next &gt; &gt;
           </a>
         </li>
@@ -96,7 +83,9 @@ export default class Recipes extends Component {
                   <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
                     Recipes in {selectedCategory.name}
                   </h6>
-                  <ul className="list-group list-group-flush">{recipelist}</ul>
+                  <div className="container">
+                    <div className="row">{recipelist}</div>
+                  </div>
                 </div>
               )}
             </div>
