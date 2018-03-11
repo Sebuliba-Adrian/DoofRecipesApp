@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="line-with-text font-weight-bold mb-4"
+>
+  <div
+    className="line"
+  />
+  <div
+    className="line-text"
+  >
+    login
+  </div>
+  <div
+    className="line"
+  />
+</div>
+`;
