@@ -1,0 +1,626 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="container items-container"
+  >
+    <div
+      className="card mt-3 mb-3"
+    >
+      <div
+        className="card-block"
+      >
+        <div
+          className="d-flex w-100 justify-content-between mb-2"
+        >
+          <h5>
+             
+          </h5>
+          <button
+            className="btn btn-sm btn-cool-blue col-xs-12"
+            data-target="#addRecipeModal"
+            data-toggle="modal"
+          >
+            <span
+              className="fa fa-plus pull-left"
+            />
+             Add Recipe
+          </button>
+        </div>
+        <nav
+          aria-label="..."
+        >
+          <ul
+            className="pagination pagination-lg"
+          >
+            <li
+              className="page-item"
+            >
+              <a
+                className="page-link"
+                onClick={[Function]}
+                tabIndex="-1"
+              >
+                &lt; &lt; Previous
+              </a>
+            </li>
+            <li
+              className="page-item"
+            >
+              <a
+                className="page-link"
+                onClick={[Function]}
+                tabIndex="-1"
+              >
+                Next &gt; &gt;
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <h6
+            className="card-text ml-4 pb-2 text-center text-cool-blue"
+          >
+            Recipes in 
+            Selected Category
+          </h6>
+          <div
+            className="container"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col-6"
+              >
+                <div
+                  className="card animated zoomIn"
+                >
+                  <div
+                    className="card-block"
+                  >
+                    <div
+                      className="card-header"
+                    >
+                      <ul
+                        className="nav nav-pills card-header-pills text-center"
+                      >
+                        <div
+                          aria-label="Basic example"
+                          className="btn-group float-right"
+                          role="group"
+                        >
+                          <a
+                            className="card-link"
+                            data-backdrop="static"
+                            data-keyboard="false"
+                            data-target="#1"
+                            data-toggle="modal"
+                            href=""
+                          >
+                            Edit
+                          </a>
+                          <a
+                            className="card-link"
+                            data-backdrop="static"
+                            data-keyboard="false"
+                            data-target="#deleteRecipeModel1"
+                            data-toggle="modal"
+                            href=""
+                          >
+                            Delete
+                          </a>
+                        </div>
+                      </ul>
+                    </div>
+                    <h5
+                      className="card-title"
+                    >
+                      Test recipe
+                    </h5>
+                    <p
+                      className="card-text"
+                      style={
+                        Object {
+                          "whiteSpace": "pre-wrap",
+                        }
+                      }
+                    >
+                      This is a test recipe
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="modal fade"
+                  id={1}
+                  role="dialog"
+                  tabIndex="-1"
+                >
+                  <div
+                    className="modal-dialog"
+                    role="document"
+                  >
+                    <div
+                      className="modal-content"
+                    >
+                      <div
+                        className="modal-header"
+                      >
+                        <h5
+                          className="modal-title"
+                          id="exampleModalLabel"
+                        />
+                        <button
+                          aria-label="Close"
+                          className="close"
+                          data-dismiss="modal"
+                          type="button"
+                        >
+                          <span
+                            aria-hidden="true"
+                          >
+                            ×
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        className="modal-body"
+                      >
+                        <label
+                          htmlFor="name"
+                        >
+                          Name
+                        </label>
+                        <div
+                          className="input-group"
+                          onChange={[Function]}
+                        >
+                          <input
+                            className="form-control"
+                            id="name"
+                            name="name"
+                            onChange={[Function]}
+                            type="text"
+                            value="Test recipe"
+                          />
+                        </div>
+                        <br />
+                        <label
+                          htmlFor="description"
+                        >
+                          Description
+                        </label>
+                        <div
+                          className="input-group"
+                        >
+                          <textarea
+                            className="form-control"
+                            id="description"
+                            maxLength="140"
+                            name="description"
+                            onChange={[Function]}
+                            rows="7"
+                            type="text"
+                            value="This is a test recipe"
+                          />
+                        </div>
+                        <br />
+                      </div>
+                      <div
+                        className="modal-footer"
+                      >
+                        <button
+                          className="btn btn-secondary"
+                          data-dismiss="modal"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className="btn btn-primary"
+                          data-dismiss="modal"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="modal fade"
+                  id="deleteRecipeModel1"
+                  role="dialog"
+                  tabIndex="-1"
+                >
+                  <div
+                    className="modal-dialog"
+                    role="document"
+                  >
+                    <div
+                      className="modal-content"
+                    >
+                      <div
+                        className="modal-header"
+                      >
+                        <h5
+                          className="modal-title"
+                          id="exampleModalLabel"
+                        >
+                          Delete
+                        </h5>
+                        <button
+                          aria-label="Close"
+                          className="close"
+                          data-dismiss="modal"
+                          type="button"
+                        >
+                          <span
+                            aria-hidden="true"
+                          >
+                            ×
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        className="modal-body"
+                      >
+                        Are you sure you want to delete?
+                      </div>
+                      <div
+                        className="modal-footer"
+                      >
+                        <button
+                          className="btn btn-secondary"
+                          data-dismiss="modal"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className="btn btn-primary"
+                          data-dismiss="modal"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="col-6"
+              >
+                <div
+                  className="card animated zoomIn"
+                >
+                  <div
+                    className="card-block"
+                  >
+                    <div
+                      className="card-header"
+                    >
+                      <ul
+                        className="nav nav-pills card-header-pills text-center"
+                      >
+                        <div
+                          aria-label="Basic example"
+                          className="btn-group float-right"
+                          role="group"
+                        >
+                          <a
+                            className="card-link"
+                            data-backdrop="static"
+                            data-keyboard="false"
+                            data-target="#2"
+                            data-toggle="modal"
+                            href=""
+                          >
+                            Edit
+                          </a>
+                          <a
+                            className="card-link"
+                            data-backdrop="static"
+                            data-keyboard="false"
+                            data-target="#deleteRecipeModel2"
+                            data-toggle="modal"
+                            href=""
+                          >
+                            Delete
+                          </a>
+                        </div>
+                      </ul>
+                    </div>
+                    <h5
+                      className="card-title"
+                    >
+                      Test recipe 2
+                    </h5>
+                    <p
+                      className="card-text"
+                      style={
+                        Object {
+                          "whiteSpace": "pre-wrap",
+                        }
+                      }
+                    >
+                      This is a test recipe 2
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="modal fade"
+                  id={2}
+                  role="dialog"
+                  tabIndex="-1"
+                >
+                  <div
+                    className="modal-dialog"
+                    role="document"
+                  >
+                    <div
+                      className="modal-content"
+                    >
+                      <div
+                        className="modal-header"
+                      >
+                        <h5
+                          className="modal-title"
+                          id="exampleModalLabel"
+                        />
+                        <button
+                          aria-label="Close"
+                          className="close"
+                          data-dismiss="modal"
+                          type="button"
+                        >
+                          <span
+                            aria-hidden="true"
+                          >
+                            ×
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        className="modal-body"
+                      >
+                        <label
+                          htmlFor="name"
+                        >
+                          Name
+                        </label>
+                        <div
+                          className="input-group"
+                          onChange={[Function]}
+                        >
+                          <input
+                            className="form-control"
+                            id="name"
+                            name="name"
+                            onChange={[Function]}
+                            type="text"
+                            value="Test recipe 2"
+                          />
+                        </div>
+                        <br />
+                        <label
+                          htmlFor="description"
+                        >
+                          Description
+                        </label>
+                        <div
+                          className="input-group"
+                        >
+                          <textarea
+                            className="form-control"
+                            id="description"
+                            maxLength="140"
+                            name="description"
+                            onChange={[Function]}
+                            rows="7"
+                            type="text"
+                            value="This is a test recipe 2"
+                          />
+                        </div>
+                        <br />
+                      </div>
+                      <div
+                        className="modal-footer"
+                      >
+                        <button
+                          className="btn btn-secondary"
+                          data-dismiss="modal"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className="btn btn-primary"
+                          data-dismiss="modal"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="modal fade"
+                  id="deleteRecipeModel2"
+                  role="dialog"
+                  tabIndex="-1"
+                >
+                  <div
+                    className="modal-dialog"
+                    role="document"
+                  >
+                    <div
+                      className="modal-content"
+                    >
+                      <div
+                        className="modal-header"
+                      >
+                        <h5
+                          className="modal-title"
+                          id="exampleModalLabel"
+                        >
+                          Delete
+                        </h5>
+                        <button
+                          aria-label="Close"
+                          className="close"
+                          data-dismiss="modal"
+                          type="button"
+                        >
+                          <span
+                            aria-hidden="true"
+                          >
+                            ×
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        className="modal-body"
+                      >
+                        Are you sure you want to delete?
+                      </div>
+                      <div
+                        className="modal-footer"
+                      >
+                        <button
+                          className="btn btn-secondary"
+                          data-dismiss="modal"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className="btn btn-primary"
+                          data-dismiss="modal"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="modal fade"
+    id="addRecipeModal"
+    role="dialog"
+    tabIndex="-1"
+  >
+    <div
+      className="modal-dialog"
+      role="document"
+    >
+      <div
+        className="modal-content"
+      >
+        <div
+          className="modal-header"
+        >
+          <h5
+            className="modal-title"
+            id="exampleModalLabel"
+          />
+          <button
+            aria-label="Close"
+            className="close"
+            data-dismiss="modal"
+            type="button"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ×
+            </span>
+          </button>
+        </div>
+        <div
+          className="modal-body"
+        >
+          <label
+            htmlFor="name"
+          >
+            Name
+          </label>
+          <div
+            className="input-group"
+            onChange={[Function]}
+          >
+            <input
+              className="form-control"
+              id="name"
+              name="name"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </div>
+          <br />
+          <label
+            htmlFor="description"
+          >
+            Description
+          </label>
+          <div
+            className="input-group"
+          >
+            <textarea
+              className="form-control"
+              id="description"
+              maxLength="140"
+              name="description"
+              onChange={[Function]}
+              rows="7"
+              type="text"
+              value=""
+            />
+          </div>
+          <br />
+        </div>
+        <div
+          className="modal-footer"
+        >
+          <button
+            className="btn btn-secondary"
+            data-dismiss="modal"
+            onClick={[Function]}
+            type="button"
+          >
+            Cancel
+          </button>
+          <button
+            className="btn btn-primary"
+            data-dismiss="modal"
+            onClick={[Function]}
+            type="button"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
