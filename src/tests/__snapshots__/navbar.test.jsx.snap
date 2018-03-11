@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar tests renders correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-4"
+    >
+      <a
+        className="navbar-brand logo text-white"
+        href=""
+        onClick={[Function]}
+      >
+        <h3>
+          <span
+            className="fa fa-lg fa-cutlery mr-3 ml-3"
+          />
+          |   Doof! recipes
+        </h3>
+      </a>
+    </div>
+    <div
+      className="col-md-4 text-center"
+    >
+      <input
+        className="form-control mr-sm-2 search-box"
+        onKeyDown={[Function]}
+        placeholder="Search e.g c:the category name"
+        type="text"
+      />
+    </div>
+    <div
+      className="col-md-4 text-right"
+    >
+      <div
+        className="dropdown logout-dropdown"
+      >
+        <div
+          className="fa fa-user-circle fa-lg text-white dropdown-toggle"
+          data-toggle="dropdown"
+          id="dropdownMenuLink"
+        >
+           
+          <span
+            className="logo"
+          >
+            <b>
+               
+               
+            </b>
+          </span>
+        </div>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          className="dropdown-menu dropdown-cust"
+        >
+          <a
+            className="dropdown-item"
+            href=""
+            id="logoutLink"
+            onClick={[Function]}
+          >
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
