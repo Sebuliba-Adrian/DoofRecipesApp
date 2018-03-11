@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
+    "enzyme-adapter-react-15": "^1.0.5",
+    "enzyme-adapter-react-16": "^1.1.1",
     "npm": "^5.7.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "axios": "^0.17.1",
+    "axios-mock-adapter": "^1.14.1",
     "babel-eslint": "^8.2.1",
     "css-loader": "^0.28.10",
     "enzyme": "^3.3.0",

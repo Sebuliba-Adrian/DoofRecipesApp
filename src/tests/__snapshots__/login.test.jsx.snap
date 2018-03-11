@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginPage /> renders three <Foo /> components 1`] = `
+<div
+  className="col-md-4 offset-md-4 col-xs-10 offset-xs-2"
+>
+  <div
+    className="card mt-5 p-4"
+  >
+    <div
+      className="card-block"
+    >
+      <div>
+        <h3
+          className="logo text-center mb-3"
+        >
+          Doof Recipes App
+        </h3>
+        <p
+          className="grey-text text-center mb-5"
+        >
+          Record your favourite recipes 
+        </p>
+      </div>
+      <div
+        className="line-with-text font-weight-bold mb-4"
+      >
+        <div
+          className="line"
+        />
+        <div
+          className="line-text"
+        >
+          LOGIN
+        </div>
+        <div
+          className="line"
+        />
+      </div>
+      
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          className="form-control mb-1"
+          name="username"
+          onChange={[Function]}
+          placeholder="Username"
+          required={true}
+          type="text"
+          value=""
+        />
+        <input
+          className="form-control mb-2"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <button
+          className="btn btn-primary btn-sm col-md-12"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+  <div
+    className="card mt-2"
+  >
+    <div
+      className="card-block"
+    >
+      <p
+        className="card-text text-center message"
+      >
+        Don't have an account? 
+        <a
+          className="card-link"
+          href="/registration"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;
