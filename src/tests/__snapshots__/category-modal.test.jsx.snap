@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category modal tests renders correctly 1`] = `
+<div
+  className="modal fade"
+  id="addCategoryModal"
+  role="dialog"
+  tabIndex="-1"
+>
+  <div
+    className="modal-dialog"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+          id="exampleModalLabel"
+        />
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div
+        className="modal-body"
+      >
+        <label
+          htmlFor="name"
+        >
+          Name
+        </label>
+        <div
+          className="input-group"
+          onChange={[Function]}
+        >
+          <input
+            className="form-control"
+            id="name"
+            name="name"
+            onChange={[Function]}
+            type="text"
+            value="Test Category"
+          />
+        </div>
+        <br />
+        <label
+          htmlFor="description"
+        >
+          Description
+        </label>
+        <div
+          className="input-group"
+        >
+          <textarea
+            className="form-control"
+            id="description"
+            maxLength="140"
+            name="description"
+            onChange={[Function]}
+            rows="7"
+            type="text"
+            value="This is a test category"
+          />
+        </div>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <button
+          className="btn btn-secondary"
+          data-dismiss="modal"
+          onClick={undefined}
+          type="button"
+        >
+          Cancel
+        </button>
+        <button
+          className="btn btn-primary"
+          data-dismiss="modal"
+          onClick={[Function]}
+          type="button"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
