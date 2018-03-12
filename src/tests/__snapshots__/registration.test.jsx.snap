@@ -96,5 +96,8 @@ exports[`Test registration renders correctly 1`] = `
       </p>
     </div>
   </div>
+  <div
+    id="snackbar"
+  />
 </div>
 `;

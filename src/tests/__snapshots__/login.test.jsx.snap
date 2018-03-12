@@ -88,5 +88,8 @@ exports[`<LoginPage /> renders three <Foo /> components 1`] = `
       </p>
     </div>
   </div>
+  <div
+    id="snackbar"
+  />
 </div>
 `;
