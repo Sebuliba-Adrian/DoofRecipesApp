@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/Sebuliba-Adrian/DoofRecipesApp.svg?branch=master)](https://travis-ci.org/Sebuliba-Adrian/DoofRecipesApp)
 # DoofRecipesApp
 
  This is a react based web application that consumes the dooofrecipes api providing an interface for users to create accounts, login and create, view, edit and delete recipes in a dashboard.
@@ -11,7 +11,7 @@
 3. Dashboard page
 ![Screenshot of dashboard page](/screenshots/dashboard.png?raw=true "Login Page")
 ### Demo
-A live demo of the application is coming soon...
+A live demo of the application is: https://doofrecipes.herokuapp.com
 
 ### Technologies required
 1. React

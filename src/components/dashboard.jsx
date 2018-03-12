@@ -88,7 +88,11 @@ export default class Dashboard extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.message !== "" && this.state.token && this.previousMessage !== this.state.message) {
+    if (
+      this.state.message !== "" &&
+      this.state.token &&
+      this.previousMessage !== this.state.message
+    ) {
       this.previousMessage = this.state.message;
       if (this.snackbar) {
         this.snackbar.className = "show";
@@ -105,13 +109,11 @@ export default class Dashboard extends Component {
       this.state.token
     }`;
     if (action === "getCategories") {
-      this.setState({ isLoading: true });
+      // this.setState({ isLoading: true }, ()=>{});
       return axios
         .get(`${APIUrl}categories`)
         .then(response => {
           const { categories, count, next, prev, pages } = response.data;
-          console.log(categories);
-
           this.setState({
             message: "",
             categories: categories,
@@ -121,8 +123,6 @@ export default class Dashboard extends Component {
             pages: pages,
             isLoading: false
           });
-
-          //     });
         })
         .catch(error => {
           if (error.response && error.response.data) {
@@ -252,9 +252,9 @@ export default class Dashboard extends Component {
           prev: prev
         });
 
-        var prevo = prev=="None"? 0 :parseInt(prev.match(/\d+$/)[0], 10);
-        console.log(categories.length)
-        if (categories.length === 1 && pages !==1) {
+        var prevo = prev === "None" ? 0 : parseInt(prev.match(/\d+$/)[0], 10);
+        console.log(categories.length);
+        if (categories.length === 1 && pages !== 1) {
           this.request("getCategories", `categories/?page=${prevo}`, "GET");
         }
       });
@@ -396,12 +396,15 @@ export default class Dashboard extends Component {
           count: count
         });
 
-         var prevo = recprev === "None" ? 0 : parseInt(recprev.match(/\d+$/)[0], 10);
+        var prevo =
+          recprev === "None" ? 0 : parseInt(recprev.match(/\d+$/)[0], 10);
 
         if (recipes.length === 1) {
           this.request(
             "getRecipes",
-            `categories/${this.state.selectedCategory.id}/recipes?page=${prevo}`,
+            `categories/${
+              this.state.selectedCategory.id
+            }/recipes?page=${prevo}`,
             "GET"
           );
         }

@@ -17,4 +17,4 @@ const App = () => (
 );
 
 export default App;
-export const APIUrl = "http://localhost:5000/";
+export const APIUrl = "https://doofrecipeapi.herokuapp.com/";
