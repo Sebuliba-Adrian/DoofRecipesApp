@@ -19,6 +19,7 @@ export default class Dashboard extends Component {
       selectedCategory: {},
       recipes: [],
       pageSize: 4,
+      pages: 0,
       count: 0,
       total: 0,
       next: "",
@@ -87,17 +88,15 @@ export default class Dashboard extends Component {
   }
 
   componentDidUpdate() {
-    if (
-      this.state.message !== "" &&
-      this.state.token &&
-      this.previousMessage !== this.state.message
-    ) {
+    if (this.state.message !== "" && this.state.token && this.previousMessage !== this.state.message) {
       this.previousMessage = this.state.message;
-      this.snackbar.className = "show";
-      this.snackbar.innerHTML = this.state.message;
-      setTimeout(() => {
-        this.snackbar.className = this.snackbar.className.replace("show", "");
-      }, 10000);
+      if (this.snackbar) {
+        this.snackbar.className = "show";
+        this.snackbar.innerHTML = this.state.message;
+        setTimeout(() => {
+          this.snackbar.className = this.snackbar.className.replace("show", "");
+        }, 3000);
+      }
     }
   }
 
@@ -110,7 +109,7 @@ export default class Dashboard extends Component {
       return axios
         .get(`${APIUrl}categories`)
         .then(response => {
-          const { categories, count, next, prev } = response.data;
+          const { categories, count, next, prev, pages } = response.data;
           console.log(categories);
 
           this.setState({
@@ -119,6 +118,7 @@ export default class Dashboard extends Component {
             pageSize: count,
             next: next,
             prev: prev,
+            pages: pages,
             isLoading: false
           });
 
@@ -230,7 +230,7 @@ export default class Dashboard extends Component {
         });
     } else if (action === "deleteCategory") {
       return axios.delete(`${APIUrl}${urlEndPoint}`).then(response => {
-        const { categories, prev, next } = this.state;
+        const { categories, prev, next, pages } = this.state;
         const stateCopy = [...categories];
         //Find index of specific object using findIndex method.
         const objIndex = stateCopy.findIndex(
@@ -252,9 +252,9 @@ export default class Dashboard extends Component {
           prev: prev
         });
 
-        var prevo = parseInt(prev.match(/\d+$/)[0], 10);
+        var prevo = prev=="None"? 0 :parseInt(prev.match(/\d+$/)[0], 10);
         console.log(categories.length)
-        if (categories.length === 1) {
+        if (categories.length === 1 && pages !==1) {
           this.request("getCategories", `categories/?page=${prevo}`, "GET");
         }
       });
@@ -396,12 +396,12 @@ export default class Dashboard extends Component {
           count: count
         });
 
-        var prev = parseInt(recprev.match(/\d+$/)[0], 10);
+         var prevo = recprev === "None" ? 0 : parseInt(recprev.match(/\d+$/)[0], 10);
 
         if (recipes.length === 1) {
           this.request(
             "getRecipes",
-            `categories/${this.state.selectedCategory.id}/recipes?page=${prev}`,
+            `categories/${this.state.selectedCategory.id}/recipes?page=${prevo}`,
             "GET"
           );
         }
