@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="message alert alert-dismissible fade show alert-info no-border-corners"
+  role="alert"
+>
+  <button
+    className="close fa fa-close align-middle"
+    data-dismiss="alert"
+    type="button"
+  />
+  
+</div>
+`;

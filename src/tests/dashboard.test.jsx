@@ -18,7 +18,6 @@ const props = {
 jest.useFakeTimers();
 
 describe("Dashboard tests", () => {
-  configure({ adapter: new Adapter() });
   it("renders correctly", () => {
     const dashbrd = renderer.create(<Dashboard {...props} />).toJSON();
     expect(dashbrd).toMatchSnapshot();
