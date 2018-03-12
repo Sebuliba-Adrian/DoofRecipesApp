@@ -1,19 +1,23 @@
 
 # DoofRecipesApp
 
- This is a react based web application that consumes the dooofrecipes api providing an interface for users to create accounts, login and create, view, edit and delete recipes.
+ This is a react based web application that consumes the dooofrecipes api providing an interface for users to create accounts, login and create, view, edit and delete recipes in a dashboard.
 
 ### Illustrations
-1. Login page
+1. Register page
+![Screenshot of registar page](/screenshots/register.png?raw=true "register Page")
+2. Login page
 ![Screenshot of login page](/screenshots/login.png?raw=true "Login Page")
-2. Dashboard
-![Screenshot of login page](/screenshots/dashboard.png?raw=true "Login Page")
+3. Dashboard page
+![Screenshot of dashboard page](/screenshots/dashboard.png?raw=true "Login Page")
 ### Demo
-A live demo of the application is hosted at https://doofreact.herokuapp.com
+A live demo of the application is coming soon...
 
-### Technologies
+### Technologies required
 1. React
-2. Bootstrap
+2. Bootstrap4 
+3. NodeJs
+4. npm or yarn
 
 ### Getting Started
 1. Create a new folder in which the app will reside and initialize git
@@ -22,17 +26,25 @@ git init
 ```
 2. Clone this repository 
 ```
-git clone https://github.com/
+https://github.com/Sebuliba-Adrian/DoofRecipesApp.git
 ```
-3. Using your package manager like npm, install dependencies
+3. Using your package manager like npm or yarn install dependencies
 ```
 npm install
+```
+or
+```
+yarn install
 ```
 4. Start the application
 ```
 npm start
 ```
-5. Navigate to it's url with your favourite browser
+or
+```
+yarn start
+```
+5. Head over to it's url in the browser and start using it
 
 ### Testing 
 In the projects root directory, to view tests and their coverage, run 
