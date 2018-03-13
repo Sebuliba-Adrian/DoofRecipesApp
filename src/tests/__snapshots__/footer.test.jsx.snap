@@ -14,7 +14,6 @@ exports[`renders correctly 1`] = `
       <a
         className="card-link"
         href="/login"
-        onClick={[Function]}
       >
         login
       </a>

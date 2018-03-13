@@ -12,7 +12,7 @@ exports[`Navbar tests renders correctly 1`] = `
     >
       <a
         className="navbar-brand logo text-white"
-        href=""
+        href="#/"
         onClick={[Function]}
       >
         <h3>
@@ -60,7 +60,7 @@ exports[`Navbar tests renders correctly 1`] = `
         >
           <a
             className="dropdown-item"
-            href=""
+            href="#/"
             id="logoutLink"
             onClick={[Function]}
           >

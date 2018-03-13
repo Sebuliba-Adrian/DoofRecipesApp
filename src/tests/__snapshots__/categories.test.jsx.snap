@@ -74,7 +74,7 @@ exports[`renders correctly 1`] = `
             <div>
               <a
                 className="list-group-item list-group-item-action flex-column align-items-start animated lightSpeedIn"
-                href=""
+                href="/#"
                 onClick={[Function]}
               >
                 <div
@@ -98,6 +98,7 @@ exports[`renders correctly 1`] = `
                       data-target="#1"
                       data-toggle="modal"
                       onClick={[Function]}
+                      role="presentation"
                     />
                     <div
                       className="fa fa-lg fa-trash-o ml-2"
@@ -106,6 +107,7 @@ exports[`renders correctly 1`] = `
                       data-target="#deleteCategoryModel1"
                       data-toggle="modal"
                       onClick={[Function]}
+                      role="presentation"
                     />
                   </div>
                 </div>
@@ -296,7 +298,7 @@ exports[`renders correctly 1`] = `
             <div>
               <a
                 className="list-group-item list-group-item-action flex-column align-items-start animated lightSpeedIn"
-                href=""
+                href="/#"
                 onClick={[Function]}
               >
                 <div
@@ -320,6 +322,7 @@ exports[`renders correctly 1`] = `
                       data-target="#2"
                       data-toggle="modal"
                       onClick={[Function]}
+                      role="presentation"
                     />
                     <div
                       className="fa fa-lg fa-trash-o ml-2"
@@ -328,6 +331,7 @@ exports[`renders correctly 1`] = `
                       data-target="#deleteCategoryModel2"
                       data-toggle="modal"
                       onClick={[Function]}
+                      role="presentation"
                     />
                   </div>
                 </div>

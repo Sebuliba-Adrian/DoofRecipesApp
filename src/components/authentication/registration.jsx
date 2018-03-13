@@ -1,46 +1,48 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Logo from '../logo';
 import Message from '../message';
 import LineWithText from './line-with-text';
 import Footer from './footer';
 import { APIUrl } from '../../App';
-import axios from 'axios';
+
 
 export default class Registration extends Component {
-                 constructor(props) {
-                   super(props);
-                   this.state = this.getDefaultState();
-                 }
+  constructor(props) {
+    super(props);
+    this.state = this.getDefaultState();
+  }
 
-                 componentDidUpdate() {
-                   if (this.state.message && !this.state.registered && this.previousMessage !== this.state.message) {
-                     this.previousMessage = this.state.message;
-                     this.snackbar.className = "show";
-                     this.snackbar.innerHTML = this.state.message;
-                     setTimeout(() => {
-                       if (this.snackbar) {
-                         this.snackbar.className = this.snackbar.className.replace("show", "");
-                       }
-                     }, 3000);
-                   }
-                 }
+  componentDidUpdate() {
+    if (this.state.message && !this.state.registered && this.previousMessage !==
+      this.state.message) {
+      this.previousMessage = this.state.message;
+      this.snackbar.className = 'show';
+      this.snackbar.innerHTML = this.state.message;
+      setTimeout(() => {
+        if (this.snackbar) {
+          this.snackbar.className = this.snackbar.className.replace('show', '');
+        }
+      }, 3000);
+    }
+  }
 
                  onInputChange = ({ target }) => {
                    this.setState({
-                     [target.name]: target.value
+                     [target.name]: target.value,
                    });
                  };
 
-                 getDefaultState = () => ({ registered: false, message: null, username: "", email: "", password: "" });
+                 getDefaultState = () => ({ registered: false, message: null, username: '', email: '', password: '' });
 
-                 submitUserDetails = event => {
+                 submitUserDetails = (event) => {
                    event.preventDefault();
                    this.registerUser();
                  };
 
                  registerUser = () => {
                    this.setState({
-                     message: "Trying to register..."
+                     message: 'Trying to register...',
                    });
 
                    const { username, email, password } = this.state;
@@ -49,42 +51,42 @@ export default class Registration extends Component {
                      .post(`${APIUrl}auth/register`, {
                        username,
                        password,
-                       email
+                       email,
                      })
-                     .then(response => {
+                     .then((response) => {
                        this.setState({
                          registered: true,
                          message:
-                           "Account created. Please login to proceed."
+                           'Account created. Please login to proceed.',
                        });
                      })
-                     .catch(error => {
+                     .catch((error) => {
                        if (error) {
-                         let key = Object.keys(error.response.data.message)[0];
+                         const key = Object.keys(error.response.data.message)[0];
                          switch (key) {
-                           case "username":
-                             let message = error.response.data.message.username;
+                           case 'username':
+                             const message = error.response.data.message.username;
                              this.setState({
-                               message: "Oops! " + message
+                               message: 'Oops! ' + message,
                              });
                              break;
-                           case "password":
-                             let message1 = error.response.data.message.password;
+                           case 'password':
+                             const message1 = error.response.data.message.password;
                              this.setState({
                                message:
-                                 "Oops! password " + message1
+                                 'Oops! password ' + message1,
                              });
                              break;
-                           case "email":
+                           case 'email':
                              let message2 = error.response.data.message.email;
                              this.setState({
-                               message: "Oops! email " + message2
+                               message: 'Oops! email ' + message2,
                              });
                              break;
                            default:
                              this.setState({
                                message:
-                                 "An error occured please try again"
+                                 'An error occured please try again',
                              });
                          }
                        }
@@ -97,7 +99,8 @@ export default class Registration extends Component {
                        message: this.state.message
                      });
                    }
-                   return <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2">
+                   return (
+                     <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2">
                        <div className="card mt-5 p-5">
                          <div className="card-block">
                            <Logo />
@@ -116,6 +119,6 @@ export default class Registration extends Component {
                        </div>
                        <Footer message="Have an account? " link="/login" linkText="Log in" />
                        <div id="snackbar" ref={(snackbar) => { this.snackbar = snackbar; }} />
-                     </div>;
+                     </div>);
                  }
-               }
+}

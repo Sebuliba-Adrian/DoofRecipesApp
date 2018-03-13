@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class RecipeModal extends Component {
   constructor(props) {
@@ -7,47 +7,47 @@ export default class RecipeModal extends Component {
       this.state = props.recipe;
     } else {
       this.state = {
-        name: "",
-        description: ""
+        name: '',
+        description: '',
       };
     }
     this.defaultState = this.state;
   }
 
   onInputChange = ({ target }) => {
-    let { value, name } = target;
+    const { value, name } = target;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleClick = event => {
+  handleClick = (event) => {
     event.stopPropagation();
   };
 
-  submitData = event => {
-      console.log(this.state.name);
-      console.log(this.state.description);
-    if (this.props.theId === "addRecipeModal") {
+  submitData = (event) => {
+    console.log(this.state.name);
+    console.log(this.state.description);
+    if (this.props.theId === 'addRecipeModal') {
       this.props.request(
-        "addRecipe",
+        'addRecipe',
         `categories/${this.props.selectedCategory.id}/recipes`,
-        "POST",
-        this.state
+        'POST',
+        this.state,
       );
     } else {
       this.props.request(
-        "updateRecipe",
+        'updateRecipe',
         `categories/${this.props.selectedCategory.id}/recipes/${this.state.id}`,
-        "PUT",
-        this.state
+        'PUT',
+        this.state,
       );
     }
     event.stopPropagation();
     this.resetState(event);
   };
-  resetState = event => {
+  resetState = (event) => {
     event.stopPropagation();
     this.setState(this.defaultState);
   };
@@ -94,7 +94,7 @@ export default class RecipeModal extends Component {
                   className="form-control"
                   id="description"
                   name="description"
-                  maxLength="140" 
+                  maxLength="140"
                   rows="7"
                   onChange={this.onInputChange}
                   value={this.state.description}

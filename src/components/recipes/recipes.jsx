@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import RecipeModal from "./recipe-modal";
-import Recipe from "./recipe";
+import React, { Component } from 'react';
+import RecipeModal from './recipe-modal';
+import Recipe from './recipe';
 
 export default class Recipes extends Component {
   constructor(props) {
@@ -21,9 +21,10 @@ export default class Recipes extends Component {
   }
 
   render() {
-    const { recipes, selectedCategory, request, next, prev } = this.props;
+    const { recipes, selectedCategory, request, next, prev,
+    } = this.props;
 
-    var recipelist = recipes.map(recipe => (
+    const recipelist = recipes.map(recipe => (
       <Recipe
         key={recipe.id}
         recipe={recipe}
@@ -32,24 +33,22 @@ export default class Recipes extends Component {
       />
     ));
 
-    var navLinks = [];
-    if (prev !== "None" && prev !== "") {
+    const navLinks = [];
+    if (prev !== 'None' && prev !== '') {
       navLinks.push(
         <li key={0} className="page-item">
-          <a className="page-link" tabIndex="-1" onClick={this.handleNavPrev}>
-            &lt; &lt; Previous
-          </a>
-        </li>
-      );
+          <button className="page-link" tabIndex="-1" onClick={this.handleNavPrev}>
+              &lt; &lt; Previous
+          </button>
+        </li>);
     }
-    if (next !== "None" && next !== "") {
+    if (next !== 'None' && next !== '') {
       navLinks.push(
         <li key={1} className="page-item">
-          <a className="page-link" tabIndex="-1" onClick={this.handleNavNext}>
+          <button className="page-link" tabIndex="-1" onClick={this.handleNavNext}>
             Next &gt; &gt;
-          </a>
-        </li>
-      );
+          </button>
+        </li>);
     }
 
     return (
@@ -58,7 +57,6 @@ export default class Recipes extends Component {
           <div className="card mt-3 mb-3">
             <div className="card-block">
               <div className="d-flex w-100 justify-content-between mb-2">
-                <h5> </h5>
                 <button
                   className="btn btn-sm btn-cool-blue col-xs-12"
                   data-toggle="modal"
@@ -70,23 +68,25 @@ export default class Recipes extends Component {
               <nav aria-label="...">
                 <ul className="pagination pagination-lg">{navLinks}</ul>
               </nav>
-              {!recipes ? (
-                <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
-                  Select a category to view it's recipes
-                </h6>
-              ) : recipes.length === 0 ? (
-                <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
-                  No recipes in {selectedCategory.name}
-                </h6>
-              ) : (
+              {!recipes ?
                 <div>
                   <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
-                    Recipes in {selectedCategory.name}
+                  Select a category to view it's recipes
                   </h6>
-                  <div className="container">
-                    <div className="row">{recipelist}</div>
-                  </div>
+              ) : recipes.length === 0 ? (
+                  <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
+                  No recipes in {selectedCategory.name}
+                  </h6>
                 </div>
+               : (
+                 <div>
+                   <h6 className="card-text ml-4 pb-2 text-center text-cool-blue">
+                    Recipes in {selectedCategory.name}
+                   </h6>
+                   <div className="container">
+                     <div className="row">{recipelist}</div>
+                   </div>
+                 </div>
               )}
             </div>
           </div>

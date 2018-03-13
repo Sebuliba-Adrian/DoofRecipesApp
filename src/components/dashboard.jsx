@@ -1,20 +1,21 @@
-import React, { Component } from "react";
-import NavBar from "./navigation";
-import Categories from "./categories/categories";
-import Recipes from "./recipes/recipes";
-import { APIUrl } from "../App";
-import axios from "axios";
-import LoadingSpinner from "./loadingSpinner";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import NavBar from './navigation';
+import Categories from './categories/categories';
+import Recipes from './recipes/recipes';
+import { APIUrl } from '../App';
+
+import LoadingSpinner from './loadingSpinner';
 
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
 
-    this.previousMessage = "";
+    this.previousMessage = '';
     this.state = {
-      token: localStorage.getItem("token"),
-      showing: "categories",
-      message: "Processing...",
+      token: localStorage.getItem('token'),
+      message: 'Processing...',
       categories: [],
       selectedCategory: {},
       recipes: [],
@@ -22,56 +23,78 @@ export default class Dashboard extends Component {
       pages: 0,
       count: 0,
       total: 0,
-      next: "",
-      prev: "",
-      recnext: "",
-      recprev: "",
-      isLoading: false
+      next: '',
+      prev: '',
+      recnext: '',
+      recprev: '',
+      isLoading: false,
     };
   }
+
+  componentDidMount() {
+    if (this.state.token) {
+      this.request('getCategories', 'categorie', 'GET');
+    }
+  }
+
+  componentDidUpdate() {
+    if (
+      this.state.message !== '' &&
+      this.state.token &&
+      this.previousMessage !== this.state.message
+    ) {
+      this.previousMessage = this.state.message;
+      if (this.snackbar) {
+        this.snackbar.className = 'show';
+        this.snackbar.innerHTML = this.state.message;
+        setTimeout(() => {
+          this.snackbar.className = this.snackbar.className.replace('show', '');
+        }, 3000);
+      }
+    }
+  }
+
   onNavigateCategories(navUri) {
-    this.request("navigateCategories", navUri, "GET");
+    this.request('navigateCategories', navUri, 'GET');
   }
   onNavigateRecipes(navUri) {
-    this.request("navigateRecipes", navUri, "GET");
+    this.request('navigateRecipes', navUri, 'GET');
   }
 
   loadFromServer(pageSize) {
-    this.request("getCategories", `categories?limit=${pageSize}`, "GET");
+    this.request('getCategories', `categories?limit=${pageSize}`, 'GET');
   }
 
-  viewRecipes = selectedCategory => {
+  viewRecipes = (selectedCategory) => {
     this.setState({
-      showing: "recipes",
       selectedCategory,
-      message: "",
+      message: '',
       recipes: [],
-      recnext: "",
-      recprev: ""
+      recnext: '',
+      recprev: '',
     });
 
     this.request(
-      "getRecipes",
+      'getRecipes',
       `categories/${selectedCategory.id}/recipes?limit=${this.state.pageSize}`,
-      "GET"
+      'GET',
     );
   };
 
   viewCategories = () => {
-    this.request("getCategories", "categories", "GET");
+    this.request('getCategories', 'categories', 'GET');
     this.setState({
-      showing: "categories",
       recipes: [],
-      selectedCategory: {}
+      selectedCategory: {},
     });
   };
 
-  search = searchTerm => {
+  search = (searchTerm) => {
     if (searchTerm.length > 0) {
       this.request(
-        "searchCategories",
+        'searchCategories',
         `categories?q=${searchTerm.substring(2)}`,
-        "GET"
+        'GET',
       );
     }
   };
@@ -81,166 +104,144 @@ export default class Dashboard extends Component {
       this.loadFromServer(pageSize);
     }
   }
-  componentDidMount() {
-    if (this.state.token) {
-      this.request("getCategories", "categories", "GET");
-    }
-  }
-
-  componentDidUpdate() {
-    if (
-      this.state.message !== "" &&
-      this.state.token &&
-      this.previousMessage !== this.state.message
-    ) {
-      this.previousMessage = this.state.message;
-      if (this.snackbar) {
-        this.snackbar.className = "show";
-        this.snackbar.innerHTML = this.state.message;
-        setTimeout(() => {
-          this.snackbar.className = this.snackbar.className.replace("show", "");
-        }, 3000);
-      }
-    }
-  }
-
   request = (action, urlEndPoint, requestMethod, requestBody) => {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${
+    axios.defaults.headers.common['Authorization'] = `Bearer ${
       this.state.token
     }`;
-    if (action === "getCategories") {
+    if (action === 'getCategories') {
       // this.setState({ isLoading: true }, ()=>{});
       return axios
         .get(`${APIUrl}categories`)
-        .then(response => {
-          const { categories, count, next, prev, pages } = response.data;
+        .then((response) => {
+          const {
+            categories,
+            count,
+            next, prev, pages,
+          } = response.data;
           this.setState({
-            message: "",
-            categories: categories,
+            message: '',
+            categories,
             pageSize: count,
-            next: next,
-            prev: prev,
-            pages: pages,
-            isLoading: false
+            next,
+            prev,
+            pages,
+            isLoading: false,
           });
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response && error.response.data) {
             this.setState({
               message: error.response.data.message,
-              categories: []
+              categories: [],
             });
           }
         });
-    } else if (action === "searchCategories") {
+    } else if (action === 'searchCategories') {
       return axios
         .get(`${APIUrl}${urlEndPoint}`)
-        .then(response => {
+        .then((response) => {
           const { categories } = response.data;
-          console.log(categories);
 
           this.setState({
-            message: "",
-            categories: categories
+            message: '',
+            categories,
           });
 
           //     });
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             message: error.response.data.message,
-            categories: []
+            categories: [],
           });
         });
-    } else if (action === "navigateCategories") {
+    } else if (action === 'navigateCategories') {
       return axios
         .get(`${urlEndPoint}`)
-        .then(response => {
-          const { categories, count, prev, next } = response.data;
+        .then((response) => {
+          const {
+            categories, count, prev, next,
+          } = response.data;
 
           this.setState({
-            message: "",
-            categories: categories,
+            message: '',
+            categories,
             pageSize: count,
-            prev: prev,
-            next: next
+            prev,
+            next,
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             message: error.response.data.message,
-            categories: []
+            categories: [],
           });
         });
-    } else if (action === "addCategory") {
+    } else if (action === 'addCategory') {
       const { name, description } = requestBody;
-      console.log(description);
       return axios
         .post(`${APIUrl}${urlEndPoint}`, {
           name,
-          description
+          description,
         })
-        .then(response => {
-          let stateCopy = [
+        .then((response) => {
+          const stateCopy = [
             ...this.state.categories,
-            Object.assign({}, response.data)
+            Object.assign({}, response.data),
           ];
 
           this.setState({
             categories: stateCopy,
-            message: response.data.message
+            message: response.data.message,
           });
           this.componentDidMount();
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response && error.response.data) {
             this.setState({
-              message: error.response.data.message
+              message: error.response.data.message,
             });
           }
         });
-    } else if (action === "updateCategory") {
+    } else if (action === 'updateCategory') {
       const { name, description } = requestBody;
 
       return axios
         .put(`${APIUrl}${urlEndPoint}`, {
           name,
-          description
+          description,
         })
-        .then(
-          function(response) {
-            let categoriesCopy = [...this.state.categories];
-            //Find index of specific object using findIndex method.
-            const objIndex = categoriesCopy.findIndex(
-              category => category.id === requestBody.id
-            );
+        .then((response) => {
+          const categoriesCopy = [...this.state.categories];
+          // Find index of specific object using findIndex method.
+          const objIndex = categoriesCopy.findIndex(category => category.id === requestBody.id);
 
-            categoriesCopy[objIndex].name = requestBody.name;
-            categoriesCopy[objIndex].description = requestBody.description;
+          categoriesCopy[objIndex].name = requestBody.name;
+          categoriesCopy[objIndex].description = requestBody.description;
 
-            this.setState({
-              message: response.data.message,
-              categories: categoriesCopy
-            });
-            console.log(this.state.recipes);
-          }.bind(this)
-        )
-        .catch(function(error) {
-          console.log(error);
+          this.setState({
+            message: response.data.message,
+            categories: categoriesCopy,
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
+            this.setState({ message: 'Error updating category' });
+          }
         });
-    } else if (action === "deleteCategory") {
-      return axios.delete(`${APIUrl}${urlEndPoint}`).then(response => {
-        const { categories, prev, next, pages } = this.state;
+    } else if (action === 'deleteCategory') {
+      return axios.delete(`${APIUrl}${urlEndPoint}`).then((response) => {
+        const {
+          categories, prev, next, pages,
+        } = this.state;
         const stateCopy = [...categories];
-        //Find index of specific object using findIndex method.
-        const objIndex = stateCopy.findIndex(
-          category =>
-            category.id ===
+        // Find index of specific object using findIndex method.
+        const objIndex = stateCopy.findIndex(category =>
+          category.id ===
             parseInt(
-              urlEndPoint.substring(urlEndPoint.lastIndexOf("/") + 1),
-              10
-            )
-        );
+              urlEndPoint.substring(urlEndPoint.lastIndexOf('/') + 1),
+              10,
+            ));
 
         stateCopy.splice(objIndex, 1);
 
@@ -248,164 +249,161 @@ export default class Dashboard extends Component {
           message: response.data.message,
           categories: stateCopy,
           recipes: [],
-          next: next,
-          prev: prev
+          next,
+          prev,
         });
 
-        var prevo = prev === "None" ? 0 : parseInt(prev.match(/\d+$/)[0], 10);
-        console.log(categories.length);
+        const prevo = prev === 'None' ? 0 : parseInt(prev.match(/\d+$/)[0], 10);
         if (categories.length === 1 && pages !== 1) {
-          this.request("getCategories", `categories/?page=${prevo}`, "GET");
+          this.request('getCategories', `categories/?page=${prevo}`, 'GET');
         }
       });
-    } else if (action === "logoutUser") {
-      localStorage.removeItem("token");
-      localStorage.removeItem("username");
+    } else if (action === 'logoutUser') {
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
       this.setState({
-        message: "Logged out successfully.",
-        token: ""
+        message: 'Logged out successfully.',
+        token: '',
       });
-    } else if (action === "getRecipes") {
+    } else if (action === 'getRecipes') {
       return axios
         .get(`${APIUrl}${urlEndPoint}`)
-        .then(response => {
-          const { recipes, count, prev, next, total } = response.data;
-          console.log(total);
+        .then((response) => {
+          const {
+            recipes, count, prev, next, total,
+          } = response.data;
 
           this.setState({
-            message: "",
-            recipes: recipes,
-            count: count,
+            message: '',
+            recipes,
+            count,
             recprev: prev,
             recnext: next,
-            total: total
+            total,
           });
         })
-        .catch(error => {
-          this.setState({
-            message:
+        .catch((error) => {
+          if (error.response) {
+            this.setState({
+              message:
               "You don't have any recipes in this category. Use the add button above to add some.",
-            recipes: []
-          });
+              recipes: [],
+            });
+          }
         });
-    } else if (action === "navigateRecipes") {
+    } else if (action === 'navigateRecipes') {
       return axios
         .get(`${urlEndPoint}`)
-        .then(response => {
-          const { recipes, count, prev, next } = response.data;
-          console.log(count);
-
+        .then((response) => {
+          const {
+            recipes, count, prev, next,
+          } = response.data;
           this.setState({
-            message: "",
-            recipes: recipes,
+            message: '',
+            recipes,
             pageSize: count,
             recprev: prev,
-            recnext: next
+            recnext: next,
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             message: error.response.data.message,
-            categories: []
+            categories: [],
           });
         });
-    } else if (action === "addRecipe") {
+    } else if (action === 'addRecipe') {
       const { name, description } = requestBody;
 
       return axios
         .post(`${APIUrl}${urlEndPoint}`, {
           name,
-          description
+          description,
         })
-        .then(response => {
-          let stateCopy = [
+        .then((response) => {
+          const stateCopy = [
             ...this.state.recipes,
-            Object.assign({}, response.data)
+            Object.assign({}, response.data),
           ];
 
           this.setState({
             recipes: stateCopy,
-            message: response.data.message
+            message: response.data.message,
           });
 
           this.request(
-            "getRecipes",
+            'getRecipes',
             `categories/${this.state.selectedCategory.id}/recipes?limit=${4}`,
-            "GET"
+            'GET',
           );
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response && error.response.data) {
-            console.log(error.response.data.message);
             this.setState({
-              message: error.response.data.message.name
+              message: error.response.data.message.name,
             });
           }
         });
-    } else if (action === "updateRecipe") {
+    } else if (action === 'updateRecipe') {
       const { name, description } = requestBody;
 
       return axios
         .put(`${APIUrl}${urlEndPoint}`, {
           name,
-          description
+          description,
         })
-        .then(
-          function(response) {
-            let recipesCopy = [...this.state.recipes];
-            //Find index of specific object using findIndex method.
-            const objIndex = recipesCopy.findIndex(
-              recipe => recipe.id === requestBody.id
-            );
+        .then((response) => {
+          const recipesCopy = [...this.state.recipes];
+          // Find index of specific object using findIndex method.
+          const objIndex = recipesCopy.findIndex(recipe => recipe.id === requestBody.id);
 
-            recipesCopy[objIndex].name = requestBody.name;
-            recipesCopy[objIndex].description = requestBody.description;
+          recipesCopy[objIndex].name = requestBody.name;
+          recipesCopy[objIndex].description = requestBody.description;
 
+          this.setState({
+            message: response.data.message,
+            recipes: recipesCopy,
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
             this.setState({
-              message: response.data.message,
-              recipes: recipesCopy
+              message: 'Error updating recipe',
             });
-            console.log(this.state);
-          }.bind(this)
-        )
-        .catch(function(error) {
-          console.log(error);
+          }
         });
-    } else if (action === "deleteRecipe") {
-      const { recipes, recnext, recprev, total, count } = this.state;
-      return axios.delete(`${APIUrl}${urlEndPoint}`).then(response => {
+    } else if (action === 'deleteRecipe') {
+      const {
+        recipes, recnext, recprev, total, count,
+      } = this.state;
+      return axios.delete(`${APIUrl}${urlEndPoint}`).then((response) => {
         const stateCopy = [...recipes];
-        //Find index of specific object using findIndex method.
-        const objIndex = stateCopy.findIndex(
-          recipe =>
-            recipe.id ===
-            parseInt(
-              urlEndPoint.substring(urlEndPoint.lastIndexOf("/") + 1),
-              10
-            )
-        );
+        // Find index of specific object using findIndex method.
+        const objIndex = stateCopy.findIndex(recipe => recipe.id === parseInt(
+          urlEndPoint.substring(urlEndPoint.lastIndexOf('/') + 1),
+          10,
+        ));
 
         stateCopy.splice(objIndex, 1);
 
         this.setState({
           message: response.data.message,
           recipes: stateCopy,
-          recprev: recprev,
-          recnext: recnext,
-          total: total,
-          count: count
+          recprev,
+          recnext,
+          total,
+          count,
         });
 
-        var prevo =
-          recprev === "None" ? 0 : parseInt(recprev.match(/\d+$/)[0], 10);
+        const prevo = recprev === 'None' ? 0 : parseInt(recprev.match(/\d+$/)[0], 10);
 
         if (recipes.length === 1) {
           this.request(
-            "getRecipes",
+            'getRecipe',
             `categories/${
               this.state.selectedCategory.id
             }/recipes?page=${prevo}`,
-            "GET"
+            'GET',
           );
         }
       });
@@ -415,10 +413,10 @@ export default class Dashboard extends Component {
   render() {
     const { isLoading } = this.state;
     if (!this.state.token) {
-      this.props.history.replace("/login", { message: this.state.message });
+      this.props.history.replace('/login', { message: this.state.message });
     }
     return (
-      <div className="container-fluid" styles={{ maxWidth: "500px" }}>
+      <div className="container-fluid" styles={{ maxWidth: '500px' }}>
         <div className="custom-navbar bg-cool-blue">
           <NavBar
             request={this.request}
@@ -460,7 +458,7 @@ export default class Dashboard extends Component {
 
         <div
           id="snackbar"
-          ref={snackbar => {
+          ref={(snackbar) => {
             this.snackbar = snackbar;
           }}
         />
@@ -468,3 +466,7 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+Dashboard.propTypes = {
+  history: PropTypes.shape({}).isRequired,
+};

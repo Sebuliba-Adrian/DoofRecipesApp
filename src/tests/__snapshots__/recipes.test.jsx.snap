@@ -14,9 +14,6 @@ exports[`renders correctly 1`] = `
         <div
           className="d-flex w-100 justify-content-between mb-2"
         >
-          <h5>
-             
-          </h5>
           <button
             className="btn btn-sm btn-cool-blue col-xs-12"
             data-target="#addRecipeModal"
@@ -37,24 +34,24 @@ exports[`renders correctly 1`] = `
             <li
               className="page-item"
             >
-              <a
+              <button
                 className="page-link"
                 onClick={[Function]}
                 tabIndex="-1"
               >
                 &lt; &lt; Previous
-              </a>
+              </button>
             </li>
             <li
               className="page-item"
             >
-              <a
+              <button
                 className="page-link"
                 onClick={[Function]}
                 tabIndex="-1"
               >
                 Next &gt; &gt;
-              </a>
+              </button>
             </li>
           </ul>
         </nav>
@@ -97,7 +94,7 @@ exports[`renders correctly 1`] = `
                             data-keyboard="false"
                             data-target="#1"
                             data-toggle="modal"
-                            href=""
+                            href="#/"
                           >
                             Edit
                           </a>
@@ -107,7 +104,7 @@ exports[`renders correctly 1`] = `
                             data-keyboard="false"
                             data-target="#deleteRecipeModel1"
                             data-toggle="modal"
-                            href=""
+                            href="#/"
                           >
                             Delete
                           </a>
@@ -320,7 +317,7 @@ exports[`renders correctly 1`] = `
                             data-keyboard="false"
                             data-target="#2"
                             data-toggle="modal"
-                            href=""
+                            href="#/"
                           >
                             Edit
                           </a>
@@ -330,7 +327,7 @@ exports[`renders correctly 1`] = `
                             data-keyboard="false"
                             data-target="#deleteRecipeModel2"
                             data-toggle="modal"
-                            href=""
+                            href="#/"
                           >
                             Delete
                           </a>

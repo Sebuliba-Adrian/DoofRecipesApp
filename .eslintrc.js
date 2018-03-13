@@ -1,4 +1,4 @@
-{
+ module.exports = {
     "extends": "airbnb",
     "parser": "babel-eslint",
     "plugins": [
@@ -9,5 +9,14 @@
 
     "globals": {
         "fetch": false
-    }
+    },
+
+   
+  "rules": {
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ]
+    }]
+  }
+
 }

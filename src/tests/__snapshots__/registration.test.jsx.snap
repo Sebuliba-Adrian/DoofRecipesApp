@@ -89,7 +89,6 @@ exports[`Test registration renders correctly 1`] = `
         <a
           className="card-link"
           href="/login"
-          onClick={[Function]}
         >
           Log in
         </a>

@@ -81,7 +81,6 @@ exports[`<LoginPage /> renders three <Foo /> components 1`] = `
         <a
           className="card-link"
           href="/registration"
-          onClick={[Function]}
         >
           Register
         </a>

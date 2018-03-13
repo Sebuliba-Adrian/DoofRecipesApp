@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import CategoryModal from "./category-modal";
-import Category from "./category";
+import React, { Component } from 'react';
+import CategoryModal from './category-modal';
+import Category from './category';
 
 export default class Categories extends Component {
   constructor(props) {
@@ -9,19 +8,6 @@ export default class Categories extends Component {
 
     this.handleNavPrev = this.handleNavPrev.bind(this);
     this.handleNavNext = this.handleNavNext.bind(this);
-  }
-
-  handleInput(event) {
-    event.preventDefault();
-    var pageSize = ReactDOM.findDOMNode(this.refs.pageSize).value;
-    if (/^[0-9]+$/.test(pageSize)) {
-      this.props.updatePageSize(pageSize);
-    } else {
-      ReactDOM.findDOMNode(this.refs.pageSize).value = pageSize.substring(
-        0,
-        pageSize.length - 1
-      );
-    }
   }
   // end::handle-page-size-updates[]
 
@@ -38,15 +24,9 @@ export default class Categories extends Component {
   }
 
   render() {
-    const {
-      categories,
-      request,
-      viewRecipes,
-      next,
-      prev
-    } = this.props;
+    const { categories, request, viewRecipes, next, prev } = this.props;
 
-    var categoryList = categories.map(category => (
+    const categoryList = categories.map(category => (
       <Category
         key={category.id}
         category={category}
@@ -54,28 +34,20 @@ export default class Categories extends Component {
         viewRecipes={viewRecipes}
       />
     ));
-    var navLinks = [];
-    if (prev !== "None" && prev !== "") {
+    const navLinks = [];
+    if (prev !== 'None' && prev !== '') {
       navLinks.push(
         <li key={0} className="page-item">
-          <a
-            className="page-link"
-            tabIndex="-1"
-            onClick={this.handleNavPrev}
-          >
-           &lt; &lt; Prev
+          <a className="page-link" tabIndex="-1" onClick={this.handleNavPrev}>
+            &lt; &lt; Prev
           </a>
         </li>
       );
     }
-    if (next !== "None" && next !== "") {
+    if (next !== 'None' && next !== '') {
       navLinks.push(
         <li key={1} className="page-item">
-          <a
-            className="page-link"
-            tabIndex="-1"
-            onClick={this.handleNavNext}
-          >
+          <a className="page-link" tabIndex="-1" onClick={this.handleNavNext}>
             Next &gt; &gt;
           </a>
         </li>
@@ -104,7 +76,7 @@ export default class Categories extends Component {
                 categories.length !== 0 && (
                   <div>
                     <h6 className="card-text ml-4 pb-2">
-                      Categories{" "}
+                      Categories{' '}
                       <small className="text-muted">
                         select to view details
                       </small>

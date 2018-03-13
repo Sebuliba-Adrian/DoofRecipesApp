@@ -23,7 +23,7 @@ exports[`Dashboard tests renders correctly 1`] = `
         >
           <a
             className="navbar-brand logo text-white"
-            href=""
+            href="#/"
             onClick={[Function]}
           >
             <h3>
@@ -72,7 +72,7 @@ exports[`Dashboard tests renders correctly 1`] = `
             >
               <a
                 className="dropdown-item"
-                href=""
+                href="#/"
                 id="logoutLink"
                 onClick={[Function]}
               >
@@ -243,9 +243,6 @@ exports[`Dashboard tests renders correctly 1`] = `
               <div
                 className="d-flex w-100 justify-content-between mb-2"
               >
-                <h5>
-                   
-                </h5>
                 <button
                   className="btn btn-sm btn-cool-blue col-xs-12"
                   data-target="#addRecipeModal"
@@ -264,11 +261,20 @@ exports[`Dashboard tests renders correctly 1`] = `
                   className="pagination pagination-lg"
                 />
               </nav>
-              <h6
-                className="card-text ml-4 pb-2 text-center text-cool-blue"
-              >
-                No recipes in 
-              </h6>
+              <div>
+                <h6
+                  className="card-text ml-4 pb-2 text-center text-cool-blue"
+                >
+                  Recipes in 
+                </h6>
+                <div
+                  className="container"
+                >
+                  <div
+                    className="row"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

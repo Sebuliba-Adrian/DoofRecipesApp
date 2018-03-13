@@ -1,9 +1,8 @@
-import React from "react";
-import CategoryModal from "./category-modal";
-import ConfirmDelete from "../confirm-delete";
+import React from 'react';
+import CategoryModal from './category-modal';
+import ConfirmDelete from '../confirm-delete';
 
 export default function Category(props) {
-  console.log(props);
   function handleClick(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -16,7 +15,7 @@ export default function Category(props) {
   return (
     <div>
       <a
-        href=""
+        href="/#"
         onClick={viewRecipes}
         className="list-group-item list-group-item-action flex-column align-items-start animated lightSpeedIn"
       >
@@ -37,6 +36,7 @@ export default function Category(props) {
               data-backdrop="static"
               data-keyboard="false"
               onClick={handleClick}
+              role="presentation"
             />
             <div
               className="fa fa-lg fa-trash-o ml-2"
@@ -45,6 +45,7 @@ export default function Category(props) {
               data-backdrop="static"
               data-keyboard="false"
               onClick={handleClick}
+              role="presentation"
             />
           </div>
         </div>

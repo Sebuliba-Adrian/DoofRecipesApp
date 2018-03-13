@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
               data-keyboard="false"
               data-target="#1"
               data-toggle="modal"
-              href=""
+              href="#/"
             >
               Edit
             </a>
@@ -37,7 +37,7 @@ exports[`renders correctly 1`] = `
               data-keyboard="false"
               data-target="#deleteRecipeModel1"
               data-toggle="modal"
-              href=""
+              href="#/"
             >
               Delete
             </a>

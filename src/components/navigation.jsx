@@ -1,25 +1,23 @@
-import React from "react";
+import React from 'react';
 
 export default function NavBar(props) {
   function logoutUser(event) {
     event.preventDefault();
-    props.request("logoutUser", "logout", "GET");
+    props.request('logoutUser', 'logout', 'GET');
   }
   function viewCategories(event) {
     event.preventDefault();
     props.viewCategories();
   }
   function triggerSearch(event) {
-    
-      props.search(event.target.value);
-
+    props.search(event.target.value);
   }
   return (
     <div className="">
       <div className="row">
         <div className="col-md-4">
           <a
-            href=""
+            href="#/"
             onClick={viewCategories}
             className="navbar-brand logo text-white"
           >
@@ -45,8 +43,8 @@ export default function NavBar(props) {
               data-toggle="dropdown"
             >
               &nbsp;<span className="logo">
-                <b> {localStorage.getItem("username")} </b>
-              </span>
+                <b> {localStorage.getItem('username')} </b>
+                </span>
             </div>
             <div
               className="dropdown-menu dropdown-cust"
@@ -55,7 +53,7 @@ export default function NavBar(props) {
               <a
                 id="logoutLink"
                 className="dropdown-item"
-                href=""
+                href="#/"
                 onClick={logoutUser}
               >
                 Logout

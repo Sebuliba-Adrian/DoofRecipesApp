@@ -1,18 +1,19 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function ConfirmDelete(props) {
   function deleteAction(event) {
-    if (props.theId.indexOf("deleteCategoryModel") > -1) {
+    if (props.theId.indexOf('deleteCategoryModel') > -1) {
       props.request(
-        "deleteCategory",
+        'deleteCategory',
         `categories/${props.category.id}`,
-        "DELETE"
+        'DELETE',
       );
     } else {
       props.request(
-        "deleteRecipe",
+        'deleteRecipe',
         `categories/${props.selectedCategory.id}/recipes/${props.recipe.id}`,
-        "DELETE"
+        'DELETE',
       );
     }
     event.stopPropagation();
@@ -62,3 +63,17 @@ export default function ConfirmDelete(props) {
     </div>
   );
 }
+
+ConfirmDelete.propTypes = {
+  theId: PropTypes.string.isRequired,
+  request: PropTypes.func.isRequired,
+  selectedCategory: PropTypes.shape({ id: '' }),
+  category: PropTypes.shape({ id: '' }),
+  recipe: PropTypes.shape({ id: '' }),
+};
+
+ConfirmDelete.defaultProps = {
+  selectedCategory: { id: '' },
+  category: { id: '' },
+  recipe: { id: '' },
+};

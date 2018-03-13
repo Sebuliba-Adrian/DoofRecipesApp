@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class CategoryModal extends Component {
   constructor(props) {
@@ -7,30 +7,30 @@ export default class CategoryModal extends Component {
       this.state = props.category;
     } else {
       this.state = {
-        name: "",
-        description: ""
+        name: '',
+        description: '',
       };
     }
   }
 
   onInputChange = ({ target }) => {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   };
 
-  submitData = event => {
-      event.stopPropagation();
-      event.preventDefault();
-    if (this.props.theId === "addCategoryModal") {
-      this.props.request("addCategory", "categories", "POST", this.state);
-      this.setState({ name: "", description: "" });
+  submitData = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    if (this.props.theId === 'addCategoryModal') {
+      this.props.request('addCategory', 'categories', 'POST', this.state);
+      this.setState({ name: '', description: '' });
     } else {
       this.props.request(
-        "updateCategory",
+        'updateCategory',
         `categories/${this.state.id}`,
-        "PUT",
-        this.state
+        'PUT',
+        this.state,
       );
     }
     event.stopPropagation();
