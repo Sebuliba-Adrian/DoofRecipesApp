@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/Sebuliba-Adrian/DoofRecipesApp.svg?branch=master)](https://travis-ci.org/Sebuliba-Adrian/DoofRecipesApp)
+[![Build Status](https://travis-ci.org/Sebuliba-Adrian/DoofRecipesApp.svg?branch=ft-enzyme-jest-tests-154939004)](https://travis-ci.org/Sebuliba-Adrian/DoofRecipesApp)
+[![Coverage Status](https://coveralls.io/repos/github/Sebuliba-Adrian/DoofRecipesApp/badge.svg?branch=ft-enzyme-jest-tests-154939004)](https://coveralls.io/github/Sebuliba-Adrian/DoofRecipesApp?branch=ft-enzyme-jest-tests-154939004)
 # DoofRecipesApp
 
  This is a react based web application that consumes the dooofrecipes api providing an interface for users to create accounts, login and create, view, edit and delete recipes in a dashboard.
