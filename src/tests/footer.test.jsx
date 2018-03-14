@@ -1,21 +1,20 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import renderer from "react-test-renderer";
-import Footer from "../components/authentication/footer";
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
+import Footer from '../components/authentication/footer';
 
 const props = {
-  message: "success",
-  link: "/login",
-  linkText: "login"
+  message: 'success',
+  link: '/login',
+  linkText: 'login',
 };
 
-it("renders correctly", () => {
+it('renders correctly', () => {
   const footer = renderer
     .create(
-      <BrowserRouter>
+    <BrowserRouter>
         <Footer {...props} />
-      </BrowserRouter>
-    )
+      </BrowserRouter>)
     .toJSON();
   expect(footer).toMatchSnapshot();
 });

@@ -38,7 +38,7 @@ export default class Categories extends Component {
     if (prev !== 'None' && prev !== '') {
       navLinks.push(
         <li key={0} className="page-item">
-          <a className="page-link" tabIndex="-1" onClick={this.handleNavPrev}>
+          <a href className="page-link" tabIndex="-1" onClick={this.handleNavPrev}>
             &lt; &lt; Prev
           </a>
         </li>

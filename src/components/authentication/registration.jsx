@@ -33,7 +33,9 @@ export default class Registration extends Component {
                    });
                  };
 
-                 getDefaultState = () => ({ registered: false, message: null, username: '', email: '', password: '' });
+                 getDefaultState = () => ({
+                   registered: false, message: null, username: '', email: '', password: '',
+                 });
 
                  submitUserDetails = (event) => {
                    event.preventDefault();
@@ -78,7 +80,7 @@ export default class Registration extends Component {
                              });
                              break;
                            case 'email':
-                             let message2 = error.response.data.message.email;
+                             const message2 = error.response.data.message.email;
                              this.setState({
                                message: 'Oops! email ' + message2,
                              });
@@ -95,12 +97,14 @@ export default class Registration extends Component {
 
                  render() {
                    if (this.state.registered) {
-                     this.props.history.replace("/login", {
-                       message: this.state.message
+                     this.props.history.replace('/login', {
+                       message: this.state.message,
                      });
                    }
                    return (
-                     <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2">
+                     <div className="App ">
+                     <div className="row">
+                      <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2 ">
                        <div className="card mt-5 p-5">
                          <div className="card-block">
                            <Logo />
@@ -119,6 +123,8 @@ export default class Registration extends Component {
                        </div>
                        <Footer message="Have an account? " link="/login" linkText="Log in" />
                        <div id="snackbar" ref={(snackbar) => { this.snackbar = snackbar; }} />
+                     </div>
+                     </div>
                      </div>);
                  }
 }

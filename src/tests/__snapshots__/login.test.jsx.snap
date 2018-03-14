@@ -2,93 +2,107 @@
 
 exports[`<LoginPage /> renders three <Foo /> components 1`] = `
 <div
-  className="col-md-4 offset-md-4 col-xs-10 offset-xs-2"
+  className="App "
 >
   <div
-    className="card mt-5 p-4"
+    className="row"
   >
     <div
-      className="card-block"
+      className="col-md-4 offset-md-4 col-xs-10 offset-xs-2"
     >
-      <div>
-        <h3
-          className="logo text-center mb-3"
+      <div
+        className="card mt-5 p-4"
+      >
+        <div
+          className="card-block"
         >
-          Doof Recipes App
-        </h3>
-        <p
-          className="grey-text text-center mb-5"
-        >
-          Record your favourite recipes 
-        </p>
+          <div>
+            <h3
+              className="logo text-center mb-3"
+            >
+              Doof Recipes App
+            </h3>
+            <p
+              className="grey-text text-center mb-5"
+            >
+              Record your favourite recipes 
+            </p>
+          </div>
+          <div
+            className="line-with-text font-weight-bold mb-4"
+          >
+            <div
+              className="line"
+            />
+            <div
+              className="line-text"
+            >
+              LOGIN
+            </div>
+            <div
+              className="line"
+            />
+          </div>
+          
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              className="form-control mb-1"
+              name="username"
+              onChange={[Function]}
+              placeholder="Username"
+              required={true}
+              type="text"
+              value=""
+            />
+            <input
+              className="form-control mb-2"
+              name="password"
+              onChange={[Function]}
+              placeholder="Password"
+              required={true}
+              type="password"
+              value=""
+            />
+            <button
+              className="btn btn-primary btn-sm col-md-12"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
       <div
-        className="line-with-text font-weight-bold mb-4"
+        className="card mt-2"
       >
         <div
-          className="line"
-        />
-        <div
-          className="line-text"
+          className="card-block"
         >
-          LOGIN
+          <p
+            className="card-text text-center message"
+          >
+            Don't have an account? 
+            <a
+              className="card-link"
+              href="/registration"
+            >
+              Register
+            </a>
+            <a
+              className="card-link"
+              href="/instructions"
+            >
+              How To
+            </a>
+          </p>
         </div>
-        <div
-          className="line"
-        />
       </div>
-      
-      <form
-        onSubmit={[Function]}
-      >
-        <input
-          className="form-control mb-1"
-          name="username"
-          onChange={[Function]}
-          placeholder="Username"
-          required={true}
-          type="text"
-          value=""
-        />
-        <input
-          className="form-control mb-2"
-          name="password"
-          onChange={[Function]}
-          placeholder="Password"
-          required={true}
-          type="password"
-          value=""
-        />
-        <button
-          className="btn btn-primary btn-sm col-md-12"
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
+      <div
+        id="snackbar"
+      />
     </div>
   </div>
-  <div
-    className="card mt-2"
-  >
-    <div
-      className="card-block"
-    >
-      <p
-        className="card-text text-center message"
-      >
-        Don't have an account? 
-        <a
-          className="card-link"
-          href="/registration"
-        >
-          Register
-        </a>
-      </p>
-    </div>
-  </div>
-  <div
-    id="snackbar"
-  />
 </div>
 `;

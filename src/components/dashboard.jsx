@@ -416,7 +416,8 @@ export default class Dashboard extends Component {
       this.props.history.replace('/login', { message: this.state.message });
     }
     return (
-      <div className="container-fluid" styles={{ maxWidth: '500px' }}>
+      <div className="row App-dashboard">
+      <div className="container-fluid App-dashboard" styles={{ maxWidth: '500px' }}>
         <div className="custom-navbar bg-cool-blue">
           <NavBar
             request={this.request}
@@ -462,6 +463,7 @@ export default class Dashboard extends Component {
             this.snackbar = snackbar;
           }}
         />
+      </div>
       </div>
     );
   }

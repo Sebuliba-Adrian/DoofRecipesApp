@@ -4,14 +4,16 @@ import Registration from './components/authentication/registration';
 import LoginPage from './components/authentication/login';
 import Dashboard from './components/dashboard';
 import LostPage from './components/LostPage';
+import How from './components/How';
 
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route path='/registration' component={Registration} />
-      <Route path='(/|/login)' exact component={LoginPage} />
-      <Route path='/dashboard' component={Dashboard} />
-      <Route path='*' exact={true} component={LostPage} />
+      <Route path="/registration" component={Registration} />
+      <Route path="(/|/login)" exact component={LoginPage} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/instructions" component={How} />
+      <Route path="*" component={LostPage} />
     </Switch>
   </BrowserRouter>
 );

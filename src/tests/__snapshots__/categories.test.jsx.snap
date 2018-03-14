@@ -37,6 +37,7 @@ exports[`renders correctly 1`] = `
             >
               <a
                 className="page-link"
+                href={true}
                 onClick={[Function]}
                 tabIndex="-1"
               >

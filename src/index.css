@@ -1,9 +1,27 @@
-.body {
+html,body {
   margin: 0;
   padding: 0;
   font-family: "Asap Condensed", sans-serif;
   background-color: #fafafa;
+   height: 100%;
 }
+.App {
+  text-align: center;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,255,255,0.4)), url("background.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.App-dashboard {
+  text-align: center;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,255,255,0.4)),url("restaurant_icons.png") ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
 
 .logo {
   font-family: "Open Sans Condensed", sans-serif;
@@ -105,14 +123,6 @@
   }
 }
 
-.bg-banner {
-  height: 50vh;
-  background: #1666a0;
-  position: absolute;
-  width: 100%;
-  z-index: 0;
-}
-
 .card-vcenter {
   transform: translateY(20%);
 }
@@ -171,7 +181,6 @@ div.card {
 .modal {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 
 div.container {
   padding: 10px;

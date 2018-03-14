@@ -1,22 +1,13 @@
- module.exports = {
-    "extends": "airbnb",
-    "parser": "babel-eslint",
-    "plugins": [
-        "react",
-        "jsx-a11y",
-        "import"
-    ],
+module.exports = {
+  extends: "airbnb",
 
-    "globals": {
-        "fetch": false
-    },
-
-   
-  "rules": {
-    "jsx-a11y/anchor-is-valid": [ "error", {
-      "components": [ "Link" ],
-      "specialLink": [ "to" ]
-    }]
-  }
-
-}
+  env: {
+    browser: true,
+    node: true,
+    jest: true
+    
+  },
+  rules: {
+      "react/jsx-filename-extension": 0
+    }
+};

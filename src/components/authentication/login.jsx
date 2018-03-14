@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import PropTypes from 'prop-types';
 import Logo from '../logo';
 import Message from '../message';
 import LineWithText from './line-with-text';
@@ -95,6 +95,8 @@ export default class LoginPage extends Component {
                      this.props.history.replace('/dashboard');
                    }
                    return (
+                      <div className="App ">
+                     <div className="row">
                      <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2">
                        <div className="card mt-5 p-4">
                          <div className="card-block">
@@ -112,6 +114,12 @@ export default class LoginPage extends Component {
                        </div>
                        <Footer message="Don't have an account? " link="/registration" linkText="Register" />
                        <div id="snackbar" ref={(snackbar) => { this.snackbar = snackbar; }} />
+                     </div>
+                     </div>
                      </div>);
                  }
 }
+
+LoginPage.propTypes = {
+  history: PropTypes.shape({}).isRequired,
+};
