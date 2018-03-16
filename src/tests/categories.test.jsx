@@ -1,7 +1,9 @@
 import React from "react";
+import { shallow, configure } from "enzyme";
 import renderer from "react-test-renderer";
 import Categories from "../components/categories/categories";
-
+import Adapter from "enzyme-adapter-react-16";
+configure({ adapter: new Adapter() });
 const props = {
   categories: [
     {
@@ -25,4 +27,9 @@ const props = {
 it("renders correctly", () => {
   const tree = renderer.create(<Categories {...props} />).toJSON();
   expect(tree).toMatchSnapshot();
+});
+
+it("renders correctlyc", () => {
+  const tree = shallow(<Categories {...props} />);
+  expect(tree).toHaveLength(1);
 });

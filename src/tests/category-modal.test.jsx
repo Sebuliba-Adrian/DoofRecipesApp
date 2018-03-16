@@ -28,9 +28,11 @@ describe("Category modal tests", () => {
     expect(categoryModal).toMatchSnapshot();
   });
 
+
+
   it("Updates name in state on change", () => {
-    const title = categoryMod.find("[type='text']").at(0);
-    title.simulate("change", {
+    const name = categoryMod.find("[type='text']").at(0);
+    name.simulate("change", {
       target: {
         name: "name",
         value: "Test category"

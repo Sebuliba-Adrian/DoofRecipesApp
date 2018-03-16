@@ -48,6 +48,7 @@ exports[`Test registration renders correctly 1`] = `
           >
             <input
               className="form-control mb-1"
+              id="username"
               name="username"
               onChange={[Function]}
               placeholder="Username"
@@ -57,6 +58,7 @@ exports[`Test registration renders correctly 1`] = `
             />
             <input
               className="form-control mb-1"
+              id="email"
               name="email"
               onChange={[Function]}
               placeholder="Email"
@@ -66,6 +68,7 @@ exports[`Test registration renders correctly 1`] = `
             />
             <input
               className="form-control mb-1"
+              id="password"
               name="password"
               onChange={[Function]}
               placeholder="Password"

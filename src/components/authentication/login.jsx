@@ -39,6 +39,7 @@ export default class LoginPage extends Component {
 
   submitUserCredentials = (event) => {
     event.preventDefault();
+    console.log('clickedddddddddddddddddddddddd')
     this.loginUser();
   };
 
@@ -94,29 +95,32 @@ export default class LoginPage extends Component {
                    if (this.state.isLoggedIn) {
                      this.props.history.replace('/dashboard');
                    }
-                   return (
-                      <div className="App ">
-                     <div className="row">
-                     <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2">
-                       <div className="card mt-5 p-4">
-                         <div className="card-block">
-                           <Logo />
-                           <LineWithText lineText="LOGIN" />
-                           {this.state.message && <Message message={this.state.message} />}
-                           <form onSubmit={this.submitUserCredentials}>
-                             <input type="text" className="form-control mb-1" placeholder="Username" name="username" value={this.state.username} onChange={this.onInputChange} required />
-                             <input className="form-control mb-2" type="password" name="password" value={this.state.password} onChange={this.onInputChange} placeholder="Password" required />
-                             <button className="btn btn-primary btn-sm col-md-12" type="submit">
-                               Submit
-                             </button>
-                           </form>
+                   return <div className="App ">
+                       <div className="row">
+                         <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2">
+                           <div className="card mt-5 p-4">
+                             <div className="card-block">
+                               <Logo />
+                               <LineWithText lineText="LOGIN" />
+                               {this.state.message && <Message message={this.state.message} />}
+                               <form onSubmit={this.submitUserCredentials}>
+                                 <input type="text" className="form-control mb-1" id="username" placeholder="Username" name="username" value={this.state.username} onChange={this.onInputChange} required />
+                                 <input className="form-control mb-2" id="password" type="password" name="password" value={this.state.password} onChange={this.onInputChange} placeholder="Password" required />
+                                 <button id='submit' className="btn btn-primary btn-sm col-md-12" type="submit">
+                                   Submit
+                                 </button>
+                               </form>
+                             </div>
+                           </div>
+                           <Footer message="Don't have an account? " link="/registration" linkText="Register" />
+                           <div id="snackbar" ref={snackbar => {
+                               this.snackbar = snackbar;
+                             }} />
                          </div>
                        </div>
-                       <Footer message="Don't have an account? " link="/registration" linkText="Register" />
-                       <div id="snackbar" ref={(snackbar) => { this.snackbar = snackbar; }} />
-                     </div>
-                     </div>
-                     </div>);
+                     </div>;
+                   
+
                  }
 }
 

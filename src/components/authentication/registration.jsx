@@ -63,7 +63,7 @@ export default class Registration extends Component {
                        });
                      })
                      .catch((error) => {
-                       if (error) {
+                       if (error.response) {
                          const key = Object.keys(error.response.data.message)[0];
                          switch (key) {
                            case 'username':
@@ -101,30 +101,31 @@ export default class Registration extends Component {
                        message: this.state.message,
                      });
                    }
-                   return (
-                     <div className="App ">
-                     <div className="row">
-                      <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2 ">
-                       <div className="card mt-5 p-5">
-                         <div className="card-block">
-                           <Logo />
-                           <LineWithText lineText="REGISTER" />
-                           {this.state.message != null && <Message message={this.state.message} />}
-                           <form onSubmit={this.submitUserDetails}>
-                             <input type="text" className="form-control mb-1" placeholder="Username" name="username" value={this.state.username} onChange={this.onInputChange} required />
-                             <input type="email" className="form-control mb-1" placeholder="Email" name="email" value={this.state.email} onChange={this.onInputChange} required />
-                             <input type="password" className="form-control mb-1" placeholder="Password" name="password" value={this.state.password} onChange={this.onInputChange} required />
+                   return <div className="App ">
+                       <div className="row">
+                         <div className="col-md-4 offset-md-4 col-xs-10 offset-xs-2 ">
+                           <div className="card mt-5 p-5">
+                             <div className="card-block">
+                               <Logo />
+                               <LineWithText lineText="REGISTER" />
+                               {this.state.message != null && <Message message={this.state.message} />}
+                               <form onSubmit={this.submitUserDetails}>
+                                 <input type="text" id="username" className="form-control mb-1" placeholder="Username" name="username" value={this.state.username} onChange={this.onInputChange} required />
+                                 <input type="email" id="email" className="form-control mb-1" placeholder="Email" name="email" value={this.state.email} onChange={this.onInputChange} required />
+                                 <input type="password" id="password" className="form-control mb-1" placeholder="Password" name="password" value={this.state.password} onChange={this.onInputChange} required />
 
-                             <button className="btn btn-primary btn-sm col-md-12" type="submit">
-                               Submit
-                             </button>
-                           </form>
+                                 <button className="btn btn-primary btn-sm col-md-12" type="submit">
+                                   Submit
+                                 </button>
+                               </form>
+                             </div>
+                           </div>
+                           <Footer message="Have an account? " link="/login" linkText="Log in" />
+                           <div id="snackbar" ref={snackbar => {
+                               this.snackbar = snackbar;
+                             }} />
                          </div>
                        </div>
-                       <Footer message="Have an account? " link="/login" linkText="Log in" />
-                       <div id="snackbar" ref={(snackbar) => { this.snackbar = snackbar; }} />
-                     </div>
-                     </div>
-                     </div>);
+                     </div>;
                  }
 }

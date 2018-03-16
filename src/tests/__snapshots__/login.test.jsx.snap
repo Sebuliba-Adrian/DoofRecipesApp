@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoginPage /> renders three <Foo /> components 1`] = `
+exports[`<LoginPage /> renders 1`] = `
 <div
   className="App "
 >
@@ -49,6 +49,7 @@ exports[`<LoginPage /> renders three <Foo /> components 1`] = `
           >
             <input
               className="form-control mb-1"
+              id="username"
               name="username"
               onChange={[Function]}
               placeholder="Username"
@@ -58,6 +59,7 @@ exports[`<LoginPage /> renders three <Foo /> components 1`] = `
             />
             <input
               className="form-control mb-2"
+              id="password"
               name="password"
               onChange={[Function]}
               placeholder="Password"
@@ -67,6 +69,7 @@ exports[`<LoginPage /> renders three <Foo /> components 1`] = `
             />
             <button
               className="btn btn-primary btn-sm col-md-12"
+              id="submit"
               type="submit"
             >
               Submit

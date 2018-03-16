@@ -25,14 +25,15 @@ describe('Test recipes', () => {
 
   configure({ adapter: new Adapter() });
   const category = mount(<Category {...props} />);
-  global.fetch = jest.fn(() => {
-    return Promise.resolve({
-      json: () => Promise.resolve({})
-    });
-  });
+ 
   it('Shows  recipes', () => {
     const categoryrow = category.find('a');
     categoryrow.simulate('click');
     expect(props.viewRecipes).toHaveBeenCalled();
   });
+
+
+
+
+
 });

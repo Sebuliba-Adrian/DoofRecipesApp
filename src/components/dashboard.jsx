@@ -172,10 +172,12 @@ export default class Dashboard extends Component {
           });
         })
         .catch((error) => {
+           if(error.response){
           this.setState({
             message: error.response.data.message,
             categories: [],
           });
+        }
         });
     } else if (action === 'addCategory') {
       const { name, description } = requestBody;
@@ -257,6 +259,15 @@ export default class Dashboard extends Component {
         if (categories.length === 1 && pages !== 1) {
           this.request('getCategories', `categories/?page=${prevo}`, 'GET');
         }
+      }).catch((error)=>{
+        if(error.response){
+
+        this.setState({
+          message:
+            "You don't have any recipes in this category. Use the add button above to add some.",
+        });
+
+        }
       });
     } else if (action === 'logoutUser') {
       localStorage.removeItem('token');
@@ -307,10 +318,12 @@ export default class Dashboard extends Component {
           });
         })
         .catch((error) => {
+          if(error.response){
           this.setState({
             message: error.response.data.message,
             categories: [],
           });
+        }
         });
     } else if (action === 'addRecipe') {
       const { name, description } = requestBody;
@@ -406,6 +419,11 @@ export default class Dashboard extends Component {
             'GET',
           );
         }
+      }).catch((error)=>{
+        if(error.response){
+          this.setState({ message: "Error deleting recipe" });
+        }
+
       });
     }
   };
