@@ -206,6 +206,7 @@ exports[`renders correctly 1`] = `
           <button
             className="btn btn-secondary"
             data-dismiss="modal"
+            id="cancel"
             onClick={[Function]}
             type="button"
           >

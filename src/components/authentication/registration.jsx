@@ -125,18 +125,18 @@ validate = (password, confm_password) => {
                 <form onSubmit={this.submitUserDetails}>
                   <input type="text" id="username" className="form-control mb-1" placeholder="Username" name="username" value={this.state.username} onChange={this.onInputChange} required />
                   <input type="email" id="email" className="form-control mb-1" placeholder="Email" name="email" value={this.state.email} onChange={this.onInputChange} required />
-                  <input type="password" id="password" className="form-control mb-1" placeholder="Password" name="password" value={this.state.password} onChange={this.onInputChange} error={!!errors.password} required />
+                  <input type="password" id="password" className="form-control mb-1" placeholder="Password" name="password" value={this.state.password} onChange={this.onInputChange}  required />
                   {errors.password && <InlineError text={errors.password} />}
                   <span>
                     <div className="help-tip">
                       <p>
                         Ensure that the password has atleast 2 unique
-                        special characters, numbers, and atleast 1 lowercase and an uppercase
-                        character
+                        special characters, numbers, and atleast 1 lowercase
+                        and an uppercase character
                       </p>
                     </div>
                   </span>
-                  <input type="password" id="confirm_password" className="form-control mb-1" placeholder="Confirm password" name="confm_password" value={this.state.confirmpassword} onChange={this.onInputChange} error={!!errors.password} required />
+                  <input type="password" id="confirm_password" className="form-control mb-1" placeholder="Confirm password" name="confm_password" value={this.state.confirmpassword} onChange={this.onInputChange} required />
                   {errors.password && <InlineError text={errors.password} />}
                   <button className="btn btn-primary btn-sm col-md-12" type="submit">
                     Submit

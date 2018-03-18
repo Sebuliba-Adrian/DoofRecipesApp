@@ -19,6 +19,10 @@ const props = {
 };
 
 describe("Test registration", () => {
+  const wrapper = mount(<Registration {...props} />);
+  const instance = wrapper.instance();
+
+  global.fetch = jest.fn(() => Promise.rejects({}));
   it("renders correctly", () => {
     const registration = renderer.create(<Registration {...props} />).toJSON();
     expect(registration).toMatchSnapshot();
@@ -30,10 +34,7 @@ describe("Test registration", () => {
     //const onSubmit = jest.fn();
     
 
-    const wrapper = mount(<Registration {...props} />);
-    const instance = wrapper.instance();
-
-    global.fetch = jest.fn(() => Promise.rejects({}));
+    
 
     const userName = wrapper.find("#username");
     userName.simulate("change", {
@@ -50,15 +51,23 @@ describe("Test registration", () => {
     expect(userEmail.value).toEqual("test@test.com");
 
     const userPassword = wrapper.find("#password");
+    const confUserPassword = wrapper.find("#confirm_password");
     userPassword.simulate("change", {
       target: { name: "password", value: "testpassword" }
     });
+    userPassword.simulate("change", {
+      target: { name: "confm_password", value: "testpassword" }
+    });
     userPassword.value = "testpassword";
     expect(userPassword.value).toEqual("testpassword");
+
+    
     
     
     const form = wrapper.find("form");
     form.find("button").simulate("submit", { preventDefault: () => {} });
     // expect(global.fetch).toHaveBeenCalled();
   });
+
+  
 });

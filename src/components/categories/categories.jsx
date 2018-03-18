@@ -38,7 +38,7 @@ export default class Categories extends Component {
     if (prev !== 'None' && prev !== '') {
       navLinks.push(
         <li key={0} className="page-item">
-          <a href className="page-link" tabIndex="-1" onClick={this.handleNavPrev}>
+          <a href className="page-link" tabIndex="-1" onClick={this.handleNavPrev} id="prev">
             &lt; &lt; Prev
           </a>
         </li>
@@ -47,7 +47,7 @@ export default class Categories extends Component {
     if (next !== 'None' && next !== '') {
       navLinks.push(
         <li key={1} className="page-item">
-          <a className="page-link" tabIndex="-1" onClick={this.handleNavNext}>
+          <a className="page-link" tabIndex="-1" onClick={this.handleNavNext} id="next">
             Next &gt; &gt;
           </a>
         </li>

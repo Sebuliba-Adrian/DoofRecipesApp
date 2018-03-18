@@ -9,9 +9,6 @@ export default function Footer({ message, link, linkText }) {
           <a href={link} className="card-link">
             {linkText}
           </a>
-          <a href="/instructions" className="card-link" >
-            How To
-          </a>
         </p>
       </div>
     </div>;

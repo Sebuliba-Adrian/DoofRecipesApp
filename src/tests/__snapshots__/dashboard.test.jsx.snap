@@ -43,7 +43,7 @@ exports[`Dashboard tests renders correctly 1`] = `
             <input
               className="form-control mr-sm-2 search-box"
               onKeyDown={[Function]}
-              placeholder="Search e.g c:the category name"
+              placeholder="Search for categories here..."
               type="text"
             />
           </div>

@@ -5,7 +5,6 @@ import ConfirmDelete from '../confirmDelete';
 export default function Category(props) {
   function handleClick(event) {
     event.preventDefault();
-    event.stopPropagation();
   }
   function viewRecipes(event) {
     event.preventDefault();
@@ -30,6 +29,7 @@ export default function Category(props) {
           </div>
           <div>
             <div
+              id="edit"
               className="fa fa-lg fa-pencil-square-o mr-2"
               data-toggle="modal"
               data-target={`#${props.category.id}`}
@@ -39,6 +39,7 @@ export default function Category(props) {
               role="presentation"
             />
             <div
+              id="delete"
               className="fa fa-lg fa-trash-o ml-2"
               data-toggle="modal"
               data-target={`#deleteCategoryModel${props.category.id}`}

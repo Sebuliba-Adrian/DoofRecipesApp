@@ -46,6 +46,7 @@ describe("Recipe modal tests", () => {
 
     expect(recipeMod.state().name).toEqual("Test recipe");
   });
+
   it("submits recipe details", () => {
     const button = recipeMod.find("button").at(2);
     button.simulate("click");

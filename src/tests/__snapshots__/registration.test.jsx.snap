@@ -76,6 +76,15 @@ exports[`Test registration renders correctly 1`] = `
               type="password"
               value=""
             />
+            <span>
+              <div
+                className="help-tip"
+              >
+                <p>
+                  Ensure that the password has atleast 2 unique special characters, numbers, and atleast 1 lowercase and an uppercase character
+                </p>
+              </div>
+            </span>
             <input
               className="form-control mb-1"
               id="confirm_password"
@@ -83,8 +92,8 @@ exports[`Test registration renders correctly 1`] = `
               onChange={[Function]}
               placeholder="Confirm password"
               required={true}
-              type="text"
-              value=""
+              type="password"
+              value={undefined}
             />
             <button
               className="btn btn-primary btn-sm col-md-12"
@@ -110,12 +119,6 @@ exports[`Test registration renders correctly 1`] = `
               href="/login"
             >
               Log in
-            </a>
-            <a
-              className="card-link"
-              href="/instructions"
-            >
-              How To
             </a>
           </p>
         </div>

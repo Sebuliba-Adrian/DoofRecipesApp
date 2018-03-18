@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { mount, configure } from "enzyme";
+import { mount, configure, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import ConfirmDelete from "../components/confirmDelete";
 
@@ -47,5 +47,9 @@ describe("Confirm delete tests", () => {
     confirmDel.setProps({ theId: "deleteItemModel1" });
     button.simulate("click");
     expect(props.request).toHaveBeenCalled();
+  });
+  it("Triggers cancel delete", () => {
+    const wrapper = shallow(<ConfirmDelete {...props} />);
+    wrapper.find("#cancel").simulate("click", { stopPropagation() {} });
   });
 });

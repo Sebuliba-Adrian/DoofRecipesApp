@@ -38,6 +38,7 @@ exports[`renders correctly 1`] = `
               <a
                 className="page-link"
                 href={true}
+                id="prev"
                 onClick={[Function]}
                 tabIndex="-1"
               >
@@ -49,6 +50,7 @@ exports[`renders correctly 1`] = `
             >
               <a
                 className="page-link"
+                id="next"
                 onClick={[Function]}
                 tabIndex="-1"
               >
@@ -98,6 +100,7 @@ exports[`renders correctly 1`] = `
                       data-keyboard="false"
                       data-target="#1"
                       data-toggle="modal"
+                      id="edit"
                       onClick={[Function]}
                       role="presentation"
                     />
@@ -107,6 +110,7 @@ exports[`renders correctly 1`] = `
                       data-keyboard="false"
                       data-target="#deleteCategoryModel1"
                       data-toggle="modal"
+                      id="delete"
                       onClick={[Function]}
                       role="presentation"
                     />
@@ -278,6 +282,7 @@ exports[`renders correctly 1`] = `
                       <button
                         className="btn btn-secondary"
                         data-dismiss="modal"
+                        id="cancel"
                         onClick={[Function]}
                         type="button"
                       >
@@ -322,6 +327,7 @@ exports[`renders correctly 1`] = `
                       data-keyboard="false"
                       data-target="#2"
                       data-toggle="modal"
+                      id="edit"
                       onClick={[Function]}
                       role="presentation"
                     />
@@ -331,6 +337,7 @@ exports[`renders correctly 1`] = `
                       data-keyboard="false"
                       data-target="#deleteCategoryModel2"
                       data-toggle="modal"
+                      id="delete"
                       onClick={[Function]}
                       role="presentation"
                     />
@@ -502,6 +509,7 @@ exports[`renders correctly 1`] = `
                       <button
                         className="btn btn-secondary"
                         data-dismiss="modal"
+                        id="cancel"
                         onClick={[Function]}
                         type="button"
                       >

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { mount, configure } from 'enzyme';
+import { mount, configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Category from '../components/categories/category';
 
@@ -31,8 +31,11 @@ describe('Test recipes', () => {
     categoryrow.simulate('click');
     expect(props.viewRecipes).toHaveBeenCalled();
   });
+  it("calls handle click ", () => {
+    const wrapper = shallow(<Category {...props} />);
+    wrapper.find("#edit").simulate("click", { preventDefault() {} });
 
-
+  });
 
 
 

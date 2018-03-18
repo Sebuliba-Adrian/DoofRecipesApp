@@ -21,6 +21,9 @@ const props = {
       date_modified: "Sun, 11 Sep 2018 11:31:50 GMT"
     }
   ],
+  prev: "prev",
+  next: "next",
+  onNavigate: jest.fn(),
   request: jest.fn(),
   viewRecipes: jest.fn()
 };
@@ -32,4 +35,13 @@ it("renders correctly", () => {
 it("renders correctlyc", () => {
   const tree = shallow(<Categories {...props} />);
   expect(tree).toHaveLength(1);
+});
+
+it("calls preventDefaults", () => {
+  const wrapper = shallow(<Categories {...props} />);
+  wrapper.find("#prev").simulate("click", { preventDefault() {} });
+});
+it("also calls preventDefaults", () => {
+  const wrapper = shallow(<Categories {...props} />);
+  wrapper.find("#next").simulate("click", { preventDefault() {} });
 });

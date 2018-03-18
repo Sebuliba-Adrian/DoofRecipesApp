@@ -34,17 +34,15 @@ export default class Recipes extends Component {
 
     const navLinks = [];
     if (prev !== 'None' && prev !== '') {
-      navLinks.push(
-        <li key={0} className="page-item">
-          <button className="page-link" tabIndex="-1" onClick={this.handleNavPrev}>
-              &lt; &lt; Previous
+      navLinks.push(<li key={0} className="page-item">
+          <button className="page-link" tabIndex="-1" onClick={this.handleNavPrev} id="prev">
+            &lt; &lt; Previous
           </button>
         </li>);
     }
     if (next !== 'None' && next !== '') {
-      navLinks.push(
-        <li key={1} className="page-item">
-          <button className="page-link" tabIndex="-1" onClick={this.handleNavNext}>
+      navLinks.push(<li key={1} className="page-item">
+          <button className="page-link" tabIndex="-1" onClick={this.handleNavNext} id="next">
             Next &gt; &gt;
           </button>
         </li>);

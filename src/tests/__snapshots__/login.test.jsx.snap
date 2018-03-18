@@ -93,12 +93,6 @@ exports[`<LoginPage /> renders 1`] = `
             >
               Register
             </a>
-            <a
-              className="card-link"
-              href="/instructions"
-            >
-              How To
-            </a>
           </p>
         </div>
       </div>

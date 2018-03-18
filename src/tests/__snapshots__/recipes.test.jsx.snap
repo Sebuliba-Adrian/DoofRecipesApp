@@ -36,6 +36,7 @@ exports[`renders correctly 1`] = `
             >
               <button
                 className="page-link"
+                id="prev"
                 onClick={[Function]}
                 tabIndex="-1"
               >
@@ -47,6 +48,7 @@ exports[`renders correctly 1`] = `
             >
               <button
                 className="page-link"
+                id="next"
                 onClick={[Function]}
                 tabIndex="-1"
               >
@@ -273,6 +275,7 @@ exports[`renders correctly 1`] = `
                         <button
                           className="btn btn-secondary"
                           data-dismiss="modal"
+                          id="cancel"
                           onClick={[Function]}
                           type="button"
                         >
@@ -496,6 +499,7 @@ exports[`renders correctly 1`] = `
                         <button
                           className="btn btn-secondary"
                           data-dismiss="modal"
+                          id="cancel"
                           onClick={[Function]}
                           type="button"
                         >

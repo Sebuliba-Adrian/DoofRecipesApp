@@ -21,11 +21,6 @@ export default class RecipeModal extends Component {
       [name]: value,
     });
   };
-
-  handleClick = (event) => {
-    event.stopPropagation();
-  };
-
   submitData = (event) => {
     console.log(this.state.name);
     console.log(this.state.description);
