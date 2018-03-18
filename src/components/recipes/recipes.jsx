@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RecipeModal from './recipe-modal';
+import RecipeModal from './recipeModal';
 import Recipe from './recipe';
 
 export default class Recipes extends Component {
@@ -8,7 +8,6 @@ export default class Recipes extends Component {
 
     this.handleNavPrev = this.handleNavPrev.bind(this);
     this.handleNavNext = this.handleNavNext.bind(this);
-    // this.handleInput = this.handleInput.bind(this);
   }
   handleNavPrev(event) {
     event.preventDefault();
@@ -51,19 +50,21 @@ export default class Recipes extends Component {
         </li>);
     }
 
+  
+
     return (
       <div>
         <div className="container items-container">
           <div className="card mt-3 mb-3">
             <div className="card-block">
               <div className="d-flex w-100 justify-content-between mb-2">
-                <button
+                {selectedCategory.name && <button
                   className="btn btn-sm btn-cool-blue col-xs-12"
                   data-toggle="modal"
                   data-target="#addRecipeModal"
                 >
                   <span className="fa fa-plus pull-left" /> Add Recipe
-                </button>
+                </button>}
               </div>
               <nav aria-label="...">
                 <ul className="pagination pagination-lg">{navLinks}</ul>

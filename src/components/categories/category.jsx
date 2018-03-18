@@ -1,6 +1,6 @@
 import React from 'react';
-import CategoryModal from './category-modal';
-import ConfirmDelete from '../confirm-delete';
+import CategoryModal from './categoryModal';
+import ConfirmDelete from '../confirmDelete';
 
 export default function Category(props) {
   function handleClick(event) {

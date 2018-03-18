@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import LineWithText from "../components/authentication/line-with-text";
+import LineWithText from "../components/authentication/lineWithText";
 
 const props = {
   lineText: "login"

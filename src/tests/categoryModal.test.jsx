@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import CategoryModal from "../components/categories/category-modal";
+import CategoryModal from "../components/categories/categoryModal";
 
 const props = {
   theId: "addCategoryModal",

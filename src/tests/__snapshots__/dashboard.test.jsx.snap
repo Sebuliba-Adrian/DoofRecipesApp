@@ -245,18 +245,7 @@ exports[`Dashboard tests renders correctly 1`] = `
               >
                 <div
                   className="d-flex w-100 justify-content-between mb-2"
-                >
-                  <button
-                    className="btn btn-sm btn-cool-blue col-xs-12"
-                    data-target="#addRecipeModal"
-                    data-toggle="modal"
-                  >
-                    <span
-                      className="fa fa-plus pull-left"
-                    />
-                     Add Recipe
-                  </button>
-                </div>
+                />
                 <nav
                   aria-label="..."
                 >

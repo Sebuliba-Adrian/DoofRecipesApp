@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import ConfirmDelete from "../components/confirm-delete";
+import ConfirmDelete from "../components/confirmDelete";
 
 const props = {
   theId: "deleteCategoryModel1",

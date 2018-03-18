@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Registration from './components/authentication/registration';
 import LoginPage from './components/authentication/login';
 import Dashboard from './components/dashboard';
-import LostPage from './components/LostPage';
-import How from './components/How';
+import LostPage from './components/lostPage';
+import How from './components/how';
 
 const App = () => (
   <BrowserRouter>

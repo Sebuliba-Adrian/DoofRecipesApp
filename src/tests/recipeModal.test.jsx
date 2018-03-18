@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import RecipeModal from "../components/recipes/recipe-modal";
+import RecipeModal from "../components/recipes/recipeModal";
 
 const props = {
   theId: "addRecipeModal",

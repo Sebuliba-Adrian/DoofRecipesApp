@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
 
   componentDidMount() {
     if (this.state.token) {
-      this.request('getCategories', 'categorie', 'GET');
+      this.request('getCategories', 'categories', 'GET');
     }
   }
 

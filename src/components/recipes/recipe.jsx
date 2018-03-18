@@ -1,6 +1,6 @@
 import React from 'react';
-import RecipeModal from './recipe-modal';
-import ConfirmDelete from '../confirm-delete';
+import RecipeModal from './recipeModal';
+import ConfirmDelete from '../confirmDelete';
 
 export default function Recipe(props) {
   return (

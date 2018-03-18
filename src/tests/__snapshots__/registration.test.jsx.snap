@@ -76,6 +76,16 @@ exports[`Test registration renders correctly 1`] = `
               type="password"
               value=""
             />
+            <input
+              className="form-control mb-1"
+              id="confirm_password"
+              name="confm_password"
+              onChange={[Function]}
+              placeholder="Confirm password"
+              required={true}
+              type="text"
+              value=""
+            />
             <button
               className="btn btn-primary btn-sm col-md-12"
               type="submit"

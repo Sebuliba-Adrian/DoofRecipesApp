@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CategoryModal from './category-modal';
+import CategoryModal from './categoryModal';
 import Category from './category';
 
 export default class Categories extends Component {
