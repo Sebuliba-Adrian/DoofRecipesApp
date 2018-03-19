@@ -3,12 +3,15 @@ import CategoryModal from './categoryModal';
 import ConfirmDelete from '../confirmDelete';
 
 export default function Category(props) {
+  //This method handles click events when a category in the list has been clicked to prevent page reload
   function handleClick(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevents page from reloading
   }
-  function viewRecipes(event) {
-    event.preventDefault();
-    props.viewRecipes(props.category);
+
+  //This method gets recipes  whenever a user clicks on a category in a list
+  function viewRecipes(event) { 
+    event.preventDefault(); // preveents page from reloading
+    props.viewRecipes(props.category); // Prop that takes in the seelected category
   }
 
   return (

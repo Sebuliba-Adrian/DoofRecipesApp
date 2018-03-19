@@ -9,15 +9,19 @@ export default class Categories extends Component {
     this.handleNavPrev = this.handleNavPrev.bind(this);
     this.handleNavNext = this.handleNavNext.bind(this);
   }
-  // end::handle-page-size-updates[]
-
-  // tag::handle-nav[]
-
+  
+  /**
+  * This method gets called whenever the user clicks the previous button of the categories
+  * param{event}
+  */
   handleNavPrev(event) {
     event.preventDefault();
     this.props.onNavigate(this.props.prev);
   }
 
+  /**
+  * This method gets called whenever the user clicks the next button of the categories
+  */
   handleNavNext(event) {
     event.preventDefault();
     this.props.onNavigate(this.props.next);
@@ -34,7 +38,8 @@ export default class Categories extends Component {
         viewRecipes={viewRecipes}
       />
     ));
-    const navLinks = [];
+    const navLinks = [];// Create an empty array
+    //If the data from the api has previous url create a previous button on the screen
     if (prev !== 'None' && prev !== '') {
       navLinks.push(
         <li key={0} className="page-item">
@@ -44,6 +49,7 @@ export default class Categories extends Component {
         </li>
       );
     }
+    //If the data from the api has next url create a next button on the screen
     if (next !== 'None' && next !== '') {
       navLinks.push(
         <li key={1} className="page-item">

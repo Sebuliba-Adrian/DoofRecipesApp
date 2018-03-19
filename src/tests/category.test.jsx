@@ -31,9 +31,9 @@ describe('Test recipes', () => {
     categoryrow.simulate('click');
     expect(props.viewRecipes).toHaveBeenCalled();
   });
-  it("calls handle click ", () => {
+  it('calls handle click ', () => {
     const wrapper = shallow(<Category {...props} />);
-    wrapper.find("#edit").simulate("click", { preventDefault() {} });
+    wrapper.find('#edit').simulate('click', { preventDefault() {} });
 
   });
 

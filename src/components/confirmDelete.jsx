@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function ConfirmDelete(props) {
+  //This method gets called when a user clicks the delete button of the confirm delete dialog 
   function deleteAction(event) {
     if (props.theId.indexOf('deleteCategoryModel') > -1) {
       props.request(
@@ -18,6 +19,7 @@ export default function ConfirmDelete(props) {
     }
     event.stopPropagation();
   }
+  //This method gets called when the user clicks the cancel button on the confirm delete dialog
   function cancelDelete(event) {
     event.stopPropagation();
   }

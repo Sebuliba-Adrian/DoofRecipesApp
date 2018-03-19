@@ -1,14 +1,17 @@
 import React from 'react';
 
 export default function NavBar(props) {
+  //This method gets called in the event that a user logsout
   function logoutUser(event) {
     event.preventDefault();
     props.request('logoutUser', 'logout', 'GET');
   }
+  //This method gets called when the user clicks the icon on the nav bar
   function viewCategories(event) {
     event.preventDefault();
     props.viewCategories();
   }
+  //This method gets called when the user searches for a category
   function triggerSearch(event) {
     props.search(event.target.value);
   }

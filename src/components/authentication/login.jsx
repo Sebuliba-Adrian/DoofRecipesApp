@@ -8,6 +8,9 @@ import Footer from './footer';
 import { APIUrl } from '../../App';
 
 export default class LoginPage extends Component {
+  /**
+  * Initialize state in the constructor
+  */
   constructor(props) {
     super(props);
     let isLoggedIn = false;
@@ -22,33 +25,50 @@ export default class LoginPage extends Component {
       message: '', isLoggedIn, username: '', password: '',
     };
   }
-
+  
+  //This lifecycle hook calls a snackbar notification when the user initially logins in successfully
   componentDidMount() {
     this.showSnackbar();
   }
-
+  
+  
+  /**
+  * This lifecycle hook calls a snackbar notifiaction whenever a user performs any CRUD operation 
+  * from the dashboard which causes a change in component state
+  */
   componentDidUpdate() {
     this.showSnackbar();
   }
-
+  
+  /*
+  *Triggered by the onchange event whevenever user inputs data, which in turn changes the state
+  * @param {target} represents the input field on which the interactions are taiking place
+  * */
   onInputChange = ({ target }) => {
     this.setState({
       [target.name]: target.value,
     });
   };
-
+  
+  /*
+  *Triggered by the onSubmit event whevenever user submits the form
+  * @param (event) represents the event object
+  * */
   submitUserCredentials = (event) => {
     event.preventDefault();
-    console.log('clickedddddddddddddddddddddddd')
     this.loginUser();
   };
-
+  
+  /*
+  *Called by the submitUserCredentials to do an api POST request to login a user
+  * */
   loginUser = () => {
     this.setState({
       message: 'Trying to login...',
     });
 
     const { username, password } = this.state;
+    //Makes an api POST request to login a user to the application
     axios
       .post(`${APIUrl}auth/login`, {
         username,
@@ -75,7 +95,7 @@ export default class LoginPage extends Component {
         }
       });
   };
-
+  //This method is called whenever the user attempts to login by showing them the appropriate notifucation message
   showSnackbar() {
     if (this.state.message && !this.state.isLoggedIn && this.previousMessage
     !== this.state.message) {
@@ -92,6 +112,7 @@ export default class LoginPage extends Component {
     }
   }
   render() {
+    //If the user is successfuly logged in, they are redirected to the dashboard
     if (this.state.isLoggedIn) {
       this.props.history.replace('/dashboard');
     }

@@ -9,6 +9,9 @@ import { APIUrl } from '../App';
 import LoadingSpinner from './loadingSpinner';
 
 export default class Dashboard extends Component {
+  /**
+  * Initialize state in the constructor
+  */
   constructor(props) {
     super(props);
 
@@ -31,12 +34,18 @@ export default class Dashboard extends Component {
     };
   }
 
+  /*
+  * Loads/fetches data from the Api after mounting component
+  * */
   componentDidMount() {
     if (this.state.token) {
       this.request('getCategories', 'categories', 'GET');
     }
   }
-
+  
+  /*
+  * Displays message in snackbar whenever component state changes
+  * */
   componentDidUpdate() {
     if (
       this.state.message !== '' &&
@@ -53,10 +62,19 @@ export default class Dashboard extends Component {
       }
     }
   }
-
+  
+  /*
+  * Navigates through the categories on every click
+  * @param (navUri) when previous or next categories exist
+  * */
   onNavigateCategories(navUri) {
     this.request('navigateCategories', navUri, 'GET');
   }
+
+  /*
+  * Navigates through the recipes on every click
+  * @param (navUri) when previous or next recipes exist
+  * */
   onNavigateRecipes(navUri) {
     this.request('navigateRecipes', navUri, 'GET');
   }
@@ -65,6 +83,10 @@ export default class Dashboard extends Component {
     this.request('getCategories', `categories?limit=${pageSize}`, 'GET');
   }
 
+  /*
+  * Displays the recipes present for each category clicked
+  * @param (selectedCategory) selected category
+  * */
   viewRecipes = (selectedCategory) => {
     this.setState({
       selectedCategory,
@@ -73,14 +95,23 @@ export default class Dashboard extends Component {
       recnext: '',
       recprev: '',
     });
-
+    
+    /*
+    * Does an api call to fetch recipes in a particular category
+    * @param {getRecipes} an action to get recipes
+    * @param {urlEndPoint} url endpoint to the recipes
+    * @param {requestMethod} a GET request to the api
+    * */
     this.request(
       'getRecipes',
       `categories/${selectedCategory.id}/recipes?limit=${this.state.pageSize}`,
       'GET',
     );
   };
-
+  
+  /*
+  * Displays the categories after making an api get request
+  * */
   viewCategories = () => {
     this.request('getCategories', 'categories', 'GET');
     this.setState({
@@ -88,7 +119,10 @@ export default class Dashboard extends Component {
       selectedCategory: {},
     });
   };
-
+  
+  /*
+  * Seaches through the categories
+  * */
   search = (searchTerm) => {
     if (searchTerm.length > 0) {
       this.request(
@@ -104,12 +138,20 @@ export default class Dashboard extends Component {
       this.loadFromServer(pageSize);
     }
   }
+
+  /*
+  * A multipurpose method that does an api call/request
+  * @param {action} an action to trigger a particular request
+  * @param {urlEndPoint} url endpoint to the resource
+  * @param {requestMethod} a GET request to the api
+  * @param {requestBody} an optional request body
+  * */
   request = (action, urlEndPoint, requestMethod, requestBody) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${
       this.state.token
     }`;
     if (action === 'getCategories') {
-      // this.setState({ isLoading: true }, ()=>{});
+      //Make a GET request to get all the categories 
       return axios
         .get(`${APIUrl}categories`)
         .then((response) => {
@@ -137,6 +179,7 @@ export default class Dashboard extends Component {
           }
         });
     } else if (action === 'searchCategories') {
+      //Make a GET request to search through the categories
       return axios
         .get(`${APIUrl}${urlEndPoint}`)
         .then((response) => {
@@ -147,7 +190,6 @@ export default class Dashboard extends Component {
             categories,
           });
 
-          //     });
         })
         .catch((error) => {
           this.setState({
@@ -156,6 +198,7 @@ export default class Dashboard extends Component {
           });
         });
     } else if (action === 'navigateCategories') {
+      //Make a get request to navigate through the categories
       return axios
         .get(`${urlEndPoint}`)
         .then((response) => {
@@ -181,6 +224,7 @@ export default class Dashboard extends Component {
         });
     } else if (action === 'addCategory') {
       const { name, description } = requestBody;
+      //Make a post request to add a new category
       return axios
         .post(`${APIUrl}${urlEndPoint}`, {
           name,
@@ -207,7 +251,7 @@ export default class Dashboard extends Component {
         });
     } else if (action === 'updateCategory') {
       const { name, description } = requestBody;
-
+      //Make a put request to update a specific recipe
       return axios
         .put(`${APIUrl}${urlEndPoint}`, {
           name,
@@ -232,6 +276,7 @@ export default class Dashboard extends Component {
           }
         });
     } else if (action === 'deleteCategory') {
+      //Make a delete request to delete a specific category
       return axios.delete(`${APIUrl}${urlEndPoint}`).then((response) => {
         const {
           categories, prev, next, pages,
@@ -254,7 +299,8 @@ export default class Dashboard extends Component {
           next,
           prev,
         });
-
+        
+        //Finds the last number on the url's end
         const prevo = prev === 'None' ? 0 : parseInt(prev.match(/\d+$/)[0], 10);
         if (categories.length === 1 && pages !== 1) {
           this.request('getCategories', `categories/?page=${prevo}`, 'GET');
@@ -270,6 +316,7 @@ export default class Dashboard extends Component {
         }
       });
     } else if (action === 'logoutUser') {
+      //Clear local storage of the token 
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       this.setState({
@@ -277,6 +324,7 @@ export default class Dashboard extends Component {
         token: '',
       });
     } else if (action === 'getRecipes') {
+      //Make a get request to navigate through all the recipes
       return axios
         .get(`${APIUrl}${urlEndPoint}`)
         .then((response) => {
@@ -303,6 +351,7 @@ export default class Dashboard extends Component {
           }
         });
     } else if (action === 'navigateRecipes') {
+      //Make a get request to navigate though the recipes
       return axios
         .get(`${urlEndPoint}`)
         .then((response) => {
@@ -327,7 +376,7 @@ export default class Dashboard extends Component {
         });
     } else if (action === 'addRecipe') {
       const { name, description } = requestBody;
-
+      //make a post request to add new recipes
       return axios
         .post(`${APIUrl}${urlEndPoint}`, {
           name,
@@ -359,7 +408,7 @@ export default class Dashboard extends Component {
         });
     } else if (action === 'updateRecipe') {
       const { name, description } = requestBody;
-
+      //Make a put request to update recipes
       return axios
         .put(`${APIUrl}${urlEndPoint}`, {
           name,
@@ -389,6 +438,7 @@ export default class Dashboard extends Component {
       const {
         recipes, recnext, recprev, total, count,
       } = this.state;
+      //Make a delete request to delete recipes
       return axios.delete(`${APIUrl}${urlEndPoint}`).then((response) => {
         const stateCopy = [...recipes];
         // Find index of specific object using findIndex method.
@@ -408,6 +458,7 @@ export default class Dashboard extends Component {
           count,
         });
 
+        //This statememt returns the last number on the url endpoint 
         const prevo = recprev === 'None' ? 0 : parseInt(recprev.match(/\d+$/)[0], 10);
 
         if (recipes.length === 1) {
@@ -430,6 +481,7 @@ export default class Dashboard extends Component {
 
   render() {
     const { isLoading } = this.state;
+    //Redirect to login page if the token is not available any more
     if (!this.state.token) {
       this.props.history.replace('/login', { message: this.state.message });
     }

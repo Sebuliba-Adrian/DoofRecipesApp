@@ -4,7 +4,7 @@ export default class CategoryModal extends Component {
   constructor(props) {
     super(props);
     if (props.category) {
-      this.state = props.category;
+      this.state = props.category; 
     } else {
       this.state = {
         name: '',
@@ -12,16 +12,23 @@ export default class CategoryModal extends Component {
       };
     }
   }
-
+  /**
+  * This method gets called whenever the user clicks the previous button of the categories
+  * @param {target} the field on which an onchange event is taking place
+  * */
   onInputChange = ({ target }) => {
     this.setState({
       [target.name]: target.value,
     });
   };
-
+  
+  /**
+  * This method gets called whenever the user submits category data
+  * @param {event} the field on which an onchange event is taking place
+  */
   submitData = (event) => {
     event.stopPropagation();
-    event.preventDefault();
+    event.preventDefault(); // Prevents the page from reloading after submit
     if (this.props.theId === 'addCategoryModal') {
       this.props.request('addCategory', 'categories', 'POST', this.state);
       this.setState({ name: '', description: '' });

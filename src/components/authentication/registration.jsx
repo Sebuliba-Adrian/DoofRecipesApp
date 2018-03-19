@@ -13,7 +13,11 @@ export default class Registration extends Component {
     super(props);
     this.state = this.getDefaultState();
   }
-
+  
+  /**
+  * This lifecycle hook calls a snackbar notifiction whenever a user performs any CRUD operation 
+  * from the dashboard which causes a change in component state
+  */
   componentDidUpdate() {
     if (this.state.message && !this.state.registered && this.previousMessage !==
       this.state.message) {
@@ -28,24 +32,34 @@ export default class Registration extends Component {
     }
   }
 
+  /*
+  *Triggered by the onchange event whevenever user inputs data, which in turn changes the state
+  * @param {target} represents the input field on which the interactions are taking place
+  * */
   onInputChange = ({ target }) => {
     this.setState({
       [target.name]: target.value,
     });
 
   };
-
+/*
+*This is a helper method for password validation
+* @param {password} password field
+* @param {confm_password} confirm password field
+* */
 validate = (password, confm_password) => {
    const errors = {};
 
   if (password !== confm_password) errors.password = "Passwords do not match";
   return errors;
 };
-
+  
+//This method initializes state
   getDefaultState = () => ({
     registered: false, message: null, username: '', email: '', password: '', confm_password:'', errors: {},
   });
 
+ //This method is used to submit user details from the registration form
   submitUserDetails = (event) => {
     const{password, confm_password} = this.state;
     const errors = this.validate(password, confm_password);
@@ -53,14 +67,15 @@ validate = (password, confm_password) => {
     event.preventDefault();
     if(Object.keys(errors).length === 0) this.registerUser();
   };
-
+  
+  //This is a hlaper method to perform an api call to register a new user
   registerUser = () => {
     this.setState({
       message: 'Trying to register...',
     });
 
     const { username, email, password } = this.state;
-
+    //An POST api call to register a new user
     axios
       .post(`${APIUrl}auth/register`, {
         username,
@@ -109,6 +124,7 @@ validate = (password, confm_password) => {
 
   render() {
     const{errors} = this.state;
+    //If user is successfully registered, redirect to login page 
     if (this.state.registered) {
       this.props.history.replace('/login', {
         message: this.state.message,
