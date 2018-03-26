@@ -1,0 +1,43 @@
+{
+  "name": "doofrecipesapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bootstrap": "^4.0.0-alpha.6",
+    "coveralls": "^3.0.0",
+    "enzyme-adapter-react-15": "^1.0.5",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "nock": "^9.2.3",
+    "npm": "^5.7.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-js-pagination": "^3.0.1",
+    "react-router-dom": "^4.2.2",
+    "react-router-prop-types": "^1.0.0",
+    "react-scripts": "1.1.0",
+    "react-test-renderer": "^16.2.0",
+    "sinon": "^4.4.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "CI=true react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=src/**/*jsx --collectCoverageFrom=!src/index.js --collectCoverageFrom=!src/registerServiceWorker.js",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.14.1",
+    "babel-eslint": "^8.2.1",
+    "css-loader": "^0.28.10",
+    "enzyme": "^3.3.0",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "style-loader": "^0.20.2"
+  }
+}

@@ -1,0 +1,637 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <div
+      className="card mt-3 mb-3"
+    >
+      <div
+        className="card-block"
+      >
+        <div
+          className="d-flex w-100 justify-content-between mb-2"
+        >
+          <p />
+          <button
+            className="btn btn-sm btn-primary col-xs-12"
+            data-target="#addCategoryModal"
+            data-toggle="modal"
+          >
+            <span
+              className="fa fa-plus pull-left"
+            />
+             Add category
+          </button>
+        </div>
+        <nav
+          aria-label="..."
+        >
+          <ul
+            className="pagination pagination-lg"
+          >
+            <li
+              className="page-item"
+            >
+              <a
+                className="page-link"
+                href={true}
+                id="prev"
+                onClick={[Function]}
+                tabIndex="-1"
+              >
+                &lt; &lt; Prev
+              </a>
+            </li>
+            <li
+              className="page-item"
+            >
+              <a
+                className="page-link"
+                id="next"
+                onClick={[Function]}
+                tabIndex="-1"
+              >
+                Next &gt; &gt;
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <h6
+            className="card-text ml-4 pb-2"
+          >
+            Categories
+             
+            <small
+              className="text-muted"
+            >
+              select to view details
+            </small>
+          </h6>
+          <ul
+            className="list-group list-group-flush"
+          >
+            <div>
+              <a
+                className="list-group-item list-group-item-action flex-column align-items-start animated lightSpeedIn"
+                href="/#"
+                onClick={[Function]}
+              >
+                <div
+                  className="d-flex w-100 justify-content-between "
+                >
+                  <div>
+                    <small
+                      className="text-muted"
+                    >
+                      <strong>
+                        Updated: 
+                      </strong>
+                      11 Feb 2018 11:31:50 GMT
+                    </small>
+                  </div>
+                  <div>
+                    <div
+                      className="fa fa-lg fa-pencil-square-o mr-2"
+                      data-backdrop="static"
+                      data-keyboard="false"
+                      data-target="#1"
+                      data-toggle="modal"
+                      id="edit"
+                      onClick={[Function]}
+                      role="presentation"
+                    />
+                    <div
+                      className="fa fa-lg fa-trash-o ml-2"
+                      data-backdrop="static"
+                      data-keyboard="false"
+                      data-target="#deleteCategoryModel1"
+                      data-toggle="modal"
+                      id="delete"
+                      onClick={[Function]}
+                      role="presentation"
+                    />
+                  </div>
+                </div>
+                <br />
+                <h4
+                  className="mb-1"
+                >
+                  Test Category
+                </h4>
+                <p
+                  className="mb-1"
+                >
+                  This is a test category
+                </p>
+                <small
+                  className="text-muted"
+                >
+                  <strong>
+                    Created: 
+                  </strong>
+                   11 Feb 2018 11:31:50 GMT
+                </small>
+              </a>
+              <div
+                className="modal fade"
+                id={1}
+                role="dialog"
+                tabIndex="-1"
+              >
+                <div
+                  className="modal-dialog"
+                  role="document"
+                >
+                  <div
+                    className="modal-content"
+                  >
+                    <div
+                      className="modal-header"
+                    >
+                      <h5
+                        className="modal-title"
+                        id="exampleModalLabel"
+                      >
+                        Edit a category
+                      </h5>
+                      <button
+                        aria-label="Close"
+                        className="close"
+                        data-dismiss="modal"
+                        type="button"
+                      >
+                        <span
+                          aria-hidden="true"
+                        >
+                          ×
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      className="modal-body"
+                    >
+                      <label
+                        htmlFor="name"
+                      >
+                        Name
+                      </label>
+                      <div
+                        className="input-group"
+                        onChange={[Function]}
+                      >
+                        <input
+                          className="form-control"
+                          id="name"
+                          name="name"
+                          onChange={[Function]}
+                          type="text"
+                          value="Test Category"
+                        />
+                      </div>
+                      <br />
+                      <label
+                        htmlFor="description"
+                      >
+                        Description
+                      </label>
+                      <div
+                        className="input-group"
+                      >
+                        <textarea
+                          className="form-control"
+                          id="description"
+                          maxLength="140"
+                          name="description"
+                          onChange={[Function]}
+                          rows="7"
+                          type="text"
+                          value="This is a test category"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="modal-footer"
+                    >
+                      <button
+                        className="btn btn-secondary"
+                        data-dismiss="modal"
+                        onClick={undefined}
+                        type="button"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        data-dismiss="modal"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="modal fade"
+                id="deleteCategoryModel1"
+                role="dialog"
+                tabIndex="-1"
+              >
+                <div
+                  className="modal-dialog"
+                  role="document"
+                >
+                  <div
+                    className="modal-content"
+                  >
+                    <div
+                      className="modal-header"
+                    >
+                      <h5
+                        className="modal-title"
+                        id="exampleModalLabel"
+                      >
+                        Delete
+                      </h5>
+                      <button
+                        aria-label="Close"
+                        className="close"
+                        data-dismiss="modal"
+                        type="button"
+                      >
+                        <span
+                          aria-hidden="true"
+                        >
+                          ×
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      className="modal-body"
+                    >
+                      Are you sure you want to delete?
+                    </div>
+                    <div
+                      className="modal-footer"
+                    >
+                      <button
+                        className="btn btn-secondary"
+                        data-dismiss="modal"
+                        id="cancel"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        data-dismiss="modal"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <a
+                className="list-group-item list-group-item-action flex-column align-items-start animated lightSpeedIn"
+                href="/#"
+                onClick={[Function]}
+              >
+                <div
+                  className="d-flex w-100 justify-content-between "
+                >
+                  <div>
+                    <small
+                      className="text-muted"
+                    >
+                      <strong>
+                        Updated: 
+                      </strong>
+                       11 Sep 2018 11:31:50 GMT
+                    </small>
+                  </div>
+                  <div>
+                    <div
+                      className="fa fa-lg fa-pencil-square-o mr-2"
+                      data-backdrop="static"
+                      data-keyboard="false"
+                      data-target="#2"
+                      data-toggle="modal"
+                      id="edit"
+                      onClick={[Function]}
+                      role="presentation"
+                    />
+                    <div
+                      className="fa fa-lg fa-trash-o ml-2"
+                      data-backdrop="static"
+                      data-keyboard="false"
+                      data-target="#deleteCategoryModel2"
+                      data-toggle="modal"
+                      id="delete"
+                      onClick={[Function]}
+                      role="presentation"
+                    />
+                  </div>
+                </div>
+                <br />
+                <h4
+                  className="mb-1"
+                >
+                  Test Category 2
+                </h4>
+                <p
+                  className="mb-1"
+                >
+                  This is a test category 2
+                </p>
+                <small
+                  className="text-muted"
+                >
+                  <strong>
+                    Created: 
+                  </strong>
+                   11 Sep 2018 11:31:50 GMT
+                </small>
+              </a>
+              <div
+                className="modal fade"
+                id={2}
+                role="dialog"
+                tabIndex="-1"
+              >
+                <div
+                  className="modal-dialog"
+                  role="document"
+                >
+                  <div
+                    className="modal-content"
+                  >
+                    <div
+                      className="modal-header"
+                    >
+                      <h5
+                        className="modal-title"
+                        id="exampleModalLabel"
+                      >
+                        Edit a category
+                      </h5>
+                      <button
+                        aria-label="Close"
+                        className="close"
+                        data-dismiss="modal"
+                        type="button"
+                      >
+                        <span
+                          aria-hidden="true"
+                        >
+                          ×
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      className="modal-body"
+                    >
+                      <label
+                        htmlFor="name"
+                      >
+                        Name
+                      </label>
+                      <div
+                        className="input-group"
+                        onChange={[Function]}
+                      >
+                        <input
+                          className="form-control"
+                          id="name"
+                          name="name"
+                          onChange={[Function]}
+                          type="text"
+                          value="Test Category 2"
+                        />
+                      </div>
+                      <br />
+                      <label
+                        htmlFor="description"
+                      >
+                        Description
+                      </label>
+                      <div
+                        className="input-group"
+                      >
+                        <textarea
+                          className="form-control"
+                          id="description"
+                          maxLength="140"
+                          name="description"
+                          onChange={[Function]}
+                          rows="7"
+                          type="text"
+                          value="This is a test category 2"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="modal-footer"
+                    >
+                      <button
+                        className="btn btn-secondary"
+                        data-dismiss="modal"
+                        onClick={undefined}
+                        type="button"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        data-dismiss="modal"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="modal fade"
+                id="deleteCategoryModel2"
+                role="dialog"
+                tabIndex="-1"
+              >
+                <div
+                  className="modal-dialog"
+                  role="document"
+                >
+                  <div
+                    className="modal-content"
+                  >
+                    <div
+                      className="modal-header"
+                    >
+                      <h5
+                        className="modal-title"
+                        id="exampleModalLabel"
+                      >
+                        Delete
+                      </h5>
+                      <button
+                        aria-label="Close"
+                        className="close"
+                        data-dismiss="modal"
+                        type="button"
+                      >
+                        <span
+                          aria-hidden="true"
+                        >
+                          ×
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      className="modal-body"
+                    >
+                      Are you sure you want to delete?
+                    </div>
+                    <div
+                      className="modal-footer"
+                    >
+                      <button
+                        className="btn btn-secondary"
+                        data-dismiss="modal"
+                        id="cancel"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        data-dismiss="modal"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="modal fade"
+    id="addCategoryModal"
+    role="dialog"
+    tabIndex="-1"
+  >
+    <div
+      className="modal-dialog"
+      role="document"
+    >
+      <div
+        className="modal-content"
+      >
+        <div
+          className="modal-header"
+        >
+          <h5
+            className="modal-title"
+            id="exampleModalLabel"
+          >
+            Create a category
+          </h5>
+          <button
+            aria-label="Close"
+            className="close"
+            data-dismiss="modal"
+            type="button"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ×
+            </span>
+          </button>
+        </div>
+        <div
+          className="modal-body"
+        >
+          <label
+            htmlFor="name"
+          >
+            Name
+          </label>
+          <div
+            className="input-group"
+            onChange={[Function]}
+          >
+            <input
+              className="form-control"
+              id="name"
+              name="name"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </div>
+          <br />
+          <label
+            htmlFor="description"
+          >
+            Description
+          </label>
+          <div
+            className="input-group"
+          >
+            <textarea
+              className="form-control"
+              id="description"
+              maxLength="140"
+              name="description"
+              onChange={[Function]}
+              rows="7"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="modal-footer"
+        >
+          <button
+            className="btn btn-secondary"
+            data-dismiss="modal"
+            onClick={undefined}
+            type="button"
+          >
+            Cancel
+          </button>
+          <button
+            className="btn btn-primary"
+            data-dismiss="modal"
+            onClick={[Function]}
+            type="button"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

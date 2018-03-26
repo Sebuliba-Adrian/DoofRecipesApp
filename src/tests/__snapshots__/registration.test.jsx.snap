@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test registration renders correctly 1`] = `
+<div
+  className="App "
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-4 offset-md-4 col-xs-10 offset-xs-2 "
+    >
+      <div
+        className="card mt-5 p-5"
+      >
+        <div
+          className="card-block"
+        >
+          <div>
+            <h3
+              className="logo text-center mb-3"
+            >
+              Doof Recipes App
+            </h3>
+            <p
+              className="grey-text text-center mb-5"
+            >
+              Record your favourite recipes 
+            </p>
+          </div>
+          <div
+            className="line-with-text font-weight-bold mb-4"
+          >
+            <div
+              className="line"
+            />
+            <div
+              className="line-text"
+            >
+              REGISTER
+            </div>
+            <div
+              className="line"
+            />
+          </div>
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              className="form-control mb-1"
+              id="username"
+              name="username"
+              onChange={[Function]}
+              placeholder="Username"
+              required={true}
+              type="text"
+              value=""
+            />
+            <input
+              className="form-control mb-1"
+              id="email"
+              name="email"
+              onChange={[Function]}
+              placeholder="Email"
+              required={true}
+              type="email"
+              value=""
+            />
+            <input
+              className="form-control mb-1"
+              id="password"
+              name="password"
+              onChange={[Function]}
+              placeholder="Password"
+              required={true}
+              type="password"
+              value=""
+            />
+            <span>
+              <div
+                className="help-tip"
+              >
+                <p>
+                  Ensure that the password has atleast 2 unique special characters, numbers, and atleast 1 lowercase and an uppercase character
+                </p>
+              </div>
+            </span>
+            <input
+              className="form-control mb-1"
+              id="confirm_password"
+              name="confm_password"
+              onChange={[Function]}
+              placeholder="Confirm password"
+              required={true}
+              type="password"
+              value={undefined}
+            />
+            <button
+              className="btn btn-primary btn-sm col-md-12"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div
+        className="card mt-2"
+      >
+        <div
+          className="card-block"
+        >
+          <p
+            className="card-text text-center message"
+          >
+            Have an account? 
+            <a
+              className="card-link"
+              href="/login"
+            >
+              Log in
+            </a>
+          </p>
+        </div>
+      </div>
+      <div
+        id="snackbar"
+      />
+    </div>
+  </div>
+</div>
+`;

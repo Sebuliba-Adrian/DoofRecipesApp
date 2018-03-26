@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="card mt-2"
+>
+  <div
+    className="card-block"
+  >
+    <p
+      className="card-text text-center message"
+    >
+      success
+      <a
+        className="card-link"
+        href="/login"
+      >
+        login
+      </a>
+    </p>
+  </div>
+</div>
+`;
